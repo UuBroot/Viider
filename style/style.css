@@ -1,0 +1,487 @@
+/**************
+*  Responsive *
+**************/
+/*Mobile*/
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+/* TODO: responsive is needet */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*******
+* Vars *
+*******/
+:root {
+  --mainPurple: #393136;
+  --mainGlay: rgb(41, 41, 41);
+  --mainBackground: #252525;
+}
+/*************
+* Animations *
+*************/
+@keyframes rotatePress {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(500deg);
+  }
+  50% {
+    transform: rotate(-40deg);
+  }
+  80% {
+    transform: rotate(40deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/********
+* Fonts *
+********/
+@font-face {
+  font-family: vercetty;
+  src: url(/fonts/Vercetti-Regular.ttf);
+}
+
+/*******************
+* General Settings *
+********************/
+html {
+  color-scheme: dark;
+  font-family: monospace;
+}
+/***samethings*****/
+button {
+  background-color: var(--mainBackground);
+  padding: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+}
+#navBoxinner {
+  background-color: var(--mainBackground);
+  padding: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  margin-right: 2vw;
+}
+/***samethings end *****/
+
+header {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--mainPurple);
+  height: 90px;
+  width: 100%;
+  top: 0;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+footer {
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  width: 20vw;
+  justify-content: space-between;
+  align-items: center;
+}
+#mainBox {
+  height: 10vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--mainGlay);
+  border-radius: 10px;
+  width: 80%;
+  height: 80vh;
+  overflow: scroll;
+  margin-top: 1vw;
+  padding-top: 10vw;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 15vw 15vw 15vw 15vw;
+  grid-column-gap: 4vw;
+  grid-row-gap: 2vw;
+  justify-content: center;
+
+  right: -3vw;
+  position: relative;
+  height: 45vw;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/********
+* Boxes *
+********/
+.searchBox {
+  position: absolute;
+  right: 3%;
+  background: var(--mainGlay);
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  height: 60px;
+}
+
+#selectionBox {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.24);
+  align-items: center;
+  border-radius: 10px;
+  border: #747474 solid 1px;
+  justify-content: space-between;
+  width: 30vw;
+}
+
+#vid-box {
+  background-color: gray;
+  width: 15vw;
+  height: 8.4vw;
+  background-repeat: no-repeat;
+  background-size: 15vw;
+  position: relative;
+  left: -2.5vw;
+  margin-bottom: 1vw;
+}
+
+#vid-box-footer {
+  background-color: rgba(0, 0, 0, 0.575);
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+  /*thegrid*/
+  grid-template-columns: repeat(7, auto);
+  grid-column-gap: auto;
+}
+
+#vid-box-footer-box {
+  height: 100%;
+  cursor: pointer;
+}
+
+#playlist-box {
+  background-color: gray;
+  width: 15vw;
+  height: 8.4vw;
+  background-repeat: no-repeat;
+  background-size: 15vw;
+  position: relative;
+  left: -2.5vw;
+  margin-bottom: 1vw;
+
+  border: rgba(0, 0, 0, 0.83) 10px solid;
+}
+
+#touchBoxforHover {
+  opacity: 0;
+  transition: all 0.2s;
+  height: 100%;
+}
+
+#touchBoxforHover:hover {
+  opacity: 1;
+}
+
+#sideBar {
+  display: none;
+  left: 12vw;
+  top: 7vw;
+  position: absolute;
+  background-color: var(--mainBackground);
+  width: 20vw;
+  height: 75vh;
+}
+
+#sortBox {
+  top: 6vw;
+  left: 30vw;
+  background-color: rgba(54, 54, 54, 0.699);
+  width: 40%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#recVidBox {
+  background-color: var(--mainGlay);
+  width: 10vw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#navBox {
+  display: flex;
+}
+
+#feature {
+  margin-top: 30vw;
+  width: 68vw;
+}
+
+#about {
+  margin-top: 30vw;
+  width: 68vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#donate {
+  margin-top: 30vw;
+  width: 68vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#vidMain {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  justify-content: space-between;
+  width: 93%;
+}
+
+#rightVidScreen {
+  display: grid;
+  grid-template-columns: auto;
+  grid-column-gap: 2vw;
+  justify-content: center;
+  overflow: scroll;
+}
+
+#leftVidScreen {
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*********
+* Classes *
+**********/
+.selectionBoxes {
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.searchSuggestionMessage {
+  cursor: pointer;
+}
+/***********
+ *  Images *
+ ***********/
+#logo {
+  width: 120px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+#homeImg {
+  width: 60px;
+}
+
+#flagImg {
+  width: 30px;
+}
+
+#subImg {
+  width: 60px;
+}
+
+#userImg {
+  width: 40px;
+  border-radius: 10px;
+  border: #747474 solid 1px;
+}
+
+#previewImg {
+  width: 50vw;
+  border: var(--mainGlay) solid 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#shareButton {
+  width: 25px;
+  animation: none;
+}
+
+#playButtonImg {
+  width: 20px;
+}
+/*********
+*  Video *
+**********/
+#videoFrame {
+  position: relative;
+  background-color: black;
+  height: auto;
+  width: auto;
+}
+
+#desHeader {
+  background-color: #1d0b15;
+  height: auto;
+}
+
+#videoPlayer {
+  width: 100%;
+  height: 40%;
+}
+
+video {
+  width: 100%;
+}
+/*Controlls*/
+#videoControlls {
+  background-color: rgba(0, 0, 0, 0.72);
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 3vw;
+  width: 100%;
+
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+#videoControlls:hover {
+  opacity: 1;
+}
+
+#playButton {
+  border: white 1px solid;
+  border-radius: 100px;
+  background-color: black;
+}
+
+#popupsettings {
+  background-color: #050505a9;
+  position: absolute;
+  width: 20vw;
+  height: 15vw;
+  bottom: 3vw;
+  right: 0px;
+
+  display: none;
+  grid-template-rows: auto auto auto;
+}
+
+#settingsButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(110, 110, 110);
+  height: 2vw;
+}
+/*Timeline*/
+
+/************
+* searchBar *
+*************/
+.searchBox {
+  width: 240px;
+}
+.searchButton {
+  background: rgb(128, 128, 128);
+  color: #2f3640;
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #402f37;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 80%;
+}
+
+#searchSuggestions {
+  display: none;
+  background-color: rgba(95, 19, 61, 0.507);
+  position: absolute;
+  width: 13vw;
+  height: auto;
+  top: 4vw;
+  right: 4.5vw;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+/*Commands*/
+#comment {
+  display: flex;
+  align-items: center;
+  background-color: #252525;
+  border-radius: 10px;
+  width: 50vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+#commentername {
+  margin-right: 10vw;
+}
+/********
+* other *
+********/
+#vidTitle {
+  font-family: vercetty;
+  margin-right: 1vw;
+}
+#moreButton {
+  position: fixed;
+  width: 10vw;
+  height: 3vw;
+  top: 43vw;
+  left: 45vw;
+}
+.descTextClass {
+  padding: 0px;
+}
+@media screen and (max-width: 800px) {
+}
