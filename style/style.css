@@ -378,9 +378,8 @@ video {
 }
 
 #playButton {
-  border: white 1px solid;
-  border-radius: 100px;
-  background-color: black;
+  background-color: #ffffff00;
+  border: none;
 }
 
 #popupsettings {
@@ -399,8 +398,10 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(110, 110, 110);
+  background-color: rgb(48, 48, 48);
   height: 2vw;
+  padding: 10px;
+  margin-right: 1vw;
 }
 /*Timeline*/
 

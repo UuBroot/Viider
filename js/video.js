@@ -1,6 +1,7 @@
 let video = document.getElementById("videoSrc");
 let videoIsLoaded = false;
 let readyStateChecker;
+let canPauseVideo = true;
 
 window.onload = function () {
   let videoId = sessionStorage.getItem("videoId");
@@ -231,16 +232,23 @@ function formateDescription(string) {
  ********/
 
 function vidplay() {
-  var video = document.getElementById("videoSrc");
-  var button = document.getElementById("playButton");
-  console.log(videoIsLoaded);
+  console.log("canpausevideo: " + canPauseVideo)
+  if(canPauseVideo == true){
+    canPauseVideo = false;
+    setTimeout(function() {
+      canPauseVideo = true;
+    },100);
+    var video = document.getElementById("videoSrc");
+    var button = document.getElementById("playButton");
+    console.log(videoIsLoaded);
 
-  if (video.paused && videoIsLoaded == true) {
-    video.play();
-    button.innerHTML = `<img src='/img/pause.svg' alt="" id="playButtonImg">`;
-  } else {
-    video.pause();
-    button.innerHTML = `<img src='/img/play.svg' alt="" id="playButtonImg">`;
+    if (video.paused && videoIsLoaded == true) {
+      video.play();
+      button.innerHTML = `<img src='/img/pause.svg' alt="" id="playButtonImg">`;
+    } else {
+      video.pause();
+      button.innerHTML = `<img src='/img/play.svg' alt="" id="playButtonImg">`;
+    }
   }
 }
 

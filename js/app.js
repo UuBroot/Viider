@@ -300,7 +300,7 @@ function searchPromptSuggestions() {
       for (let i = 0; i < data.suggestions.length; i++) {
         searchSuggestions.innerHTML += `
                 <p onclick="getApiData('/api/v1/search/?q='+ '${data.suggestions[i]}'), makeSearchthingBox()" class="searchSuggestionMessage">${data.suggestions[i]}</p>
-                `;
+        `;
       }
     });
 }
