@@ -316,10 +316,18 @@ function changevolume() {
   
 //When Video is loaded
 function onvideoLoad() {
+    document.getElementById("loading").style.display = "none"
     clearInterval(readyStateChecker);
     console.log("VIDEO LOADED");
     videoIsLoaded = true;
     vidplay();
+
+    /*AOS*/
+    AOS.refresh();
+    //Does the animation
+    AOS.init({
+      duration: 2000,
+    })
 }
   
 //Fullscreen
@@ -340,10 +348,12 @@ function theatermodeToggle() {
       document.getElementById("rightVidScreen").style.display = "grid";
       document.getElementById("leftVidScreen").style.width = "100%";
       document.getElementById("videoSrc").style.height = "auto";
+      document.getElementById("leftVidScreen").style.marginLeft = "0vw"
     } else {
       theatermode = true;
       document.getElementById("rightVidScreen").style.display = "none";
-      document.getElementById("leftVidScreen").style.width = "100vw";
+      document.getElementById("leftVidScreen").style.width = "90vw";
+      document.getElementById("leftVidScreen").style.marginLeft = "5vw"
       document.getElementById("videoSrc").style.height = Screen.height+"vw";
     }
 }

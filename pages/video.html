@@ -13,6 +13,10 @@
 
   <script src="../js/video.js" defer></script>
   <script src="../js/modules.js" defer></script>
+
+    <!--AOS-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
@@ -36,10 +40,14 @@
     </header>
 
     <main id="vidMain">
-
+      
         <div id="leftVidScreen">
+            
+            <!--Loading-->
+            <p id="loading">-                       -</p>
 
-            <div id="videoFrame">
+
+            <div id="videoFrame" data-aos="zoom-in-up">
                 
                 <video id="videoSrc" src="" onclick="vidplay()" onload="onvideoLoad()"
                 autoplay,
@@ -64,11 +72,11 @@
 
                 </div>
 
-                <div id="desHeader"></div>
+                <div id="desHeader" data-aos="slide-right" data-aos-duration='400'></div>
                 <div id="commands"></div>
             </div>
         
-        <div id="rightVidScreen"></div>
+        <div id="rightVidScreen"  data-aos="slide-up"></div>
     
     </main>
 

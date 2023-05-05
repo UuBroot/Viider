@@ -8,6 +8,9 @@ main {
     padding: 1vw;
     border-radius: 10px;
 }
+#description{
+text-align: center;
+}
 
 #banner {
     width: 100%;

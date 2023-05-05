@@ -132,6 +132,12 @@ function makeSearchthingBox() {
 }
 
 function changeMain(par) {
+  AOS.refresh();
+  //Does the animation
+  AOS.init({
+    duration: 2000,
+  })
+  
   let url;
   switch (par) {
     case "home":
@@ -203,6 +209,8 @@ function getApiData(url) {
   fetch(activeInstanceUrl + url)
     .then((response) => response.json())
     .then((data) => {
+
+      //Does the other things
       console.log(data);
       for (let i = 0; i < data.length; i++) {
         switch (data[i].type) {

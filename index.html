@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="./style/fonts.css">
     <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/index.css">
+
+    <!--AOS-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 <body>  
     <header>
@@ -20,47 +25,47 @@
             <a id="aButton" href="#features">Feature</a>
             <a id="aButton" href="#about">About</a>
             <a id="aButton" href="#donate">Donate</a>
-            <a id="aButton" href="/pages/main.html">Watch Now!</a>
+            <a id="aButton" href="./pages/main.html">Watch Now!</a>
         </div>
     </header>
 
   <main id="indexMain">
 
-    <div class="center-box">
+    <div class="center-box" data-aos="zoom-in">
         <img src="./img/preview.png" alt="" id="previewImg" style="margin-bottom: 10vw;">
         <img src="./img/logowhite.png" alt="" id="previewImg" style="border: none;">
         <h1>A private and easy to use Youtube Client.</h1>
     </div>
 
     <div id="features">
-        <div class="flex-box">
+        <div class="flex-box" data-aos="fade-left">
           <p>no ads and no personal data being send to google</p>
           <img src="./img/adblockicon.svg" alt="" id="logo">
         </div>
         
-        <div class="flex-box">
-          <img src="./img/ux.webp" alt="" id="logo">
+        <div class="flex-box" data-aos="fade-right">
+          <img src="./img/ux.webp" alt="" id="logo" >
           <p>more fetures that make the user experiance better</p>
         </div>
 
-        <div class="flex-box">
+        <div class="flex-box" data-aos="fade-left">
           <p>no account needet to subscribe to chanals</p>
           <img src="./img/noacc.webp" alt="" id="logo">
         </div>
 
-        <div class="flex-box">
+        <div class="flex-box" data-aos="fade-right">
           <img src="./img/gitlogo.webp" alt="" id="logo">
           <p>open source</p>
         </div>
 
     </div>
 
-    <div id="about">
+    <div id="about" data-aos="flip-up">
       <img src="./img/invid.svg" alt="" id="invImg">
       <p>Viider is a frontend to the invimous api whitch is a more private version of the offiziell youtube api. Most of Viiders features are using one of the community hosted Invimous instances. Viider will never show ads nor track the users.</p>
     </div>
 
-    <div id="donate">
+    <div id="donate" data-aos="bottom-top">
         <h1>How do we make the money off this?</h1>
         <p>Simply...We don't. All the money we get are from donations VVV</p>
         <div id="donateButton"><a href="https://www.paypal.com/paypalme/oasch69" target="_blank">Donate</a></div>
@@ -69,4 +74,11 @@
   </main>
 
 </body>
+
+<script>
+  AOS.init({
+    duration: 2000,
+  })
+</script>
+
 </html>

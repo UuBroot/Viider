@@ -70,6 +70,11 @@ function calculateTime(time_s) {
  ************/
 
 function generate(data) {
+    AOS.refresh();
+    //Does the animation
+    AOS.init({
+      duration: 2000,
+    })
     console.log("generates stuff")
     //set Website Title
     try {

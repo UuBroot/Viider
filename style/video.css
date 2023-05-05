@@ -19,6 +19,39 @@
     }
 }  
 
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes loadingold {
+    0% {
+        transform: rotate(10deg);
+        border: 10px #050505 solid;
+        border-radius: 10px;
+      }
+      25% {
+        transform: rotate(-10deg);
+        border: 10px var(--mainPurple) solid;
+      }
+      50% {
+        transform: rotate(10deg);
+        border: 10px #050505 solid;
+        border-radius: 0px;
+      }
+      75% {
+        transform: rotate(-10deg);
+        border: 10px var(--mainPurple) solid;
+      }
+      100% {
+        transform: rotate(10deg);
+        border: 10px #050505 solid;
+        border-radius: 10px;
+      }
+}
 /**THE MAINS**/
 #vidMain {
     display: grid;
@@ -53,7 +86,15 @@
     background-position: center;
 }
 
-
+#loading {
+    position: fixed;
+    top: 45%;
+    left: 45%;
+    font-size: 40px;
+    padding: 10px;
+    border: 10px #05050500 solid;
+    animation: loading 0.5s linear infinite;
+}
 /************
 *   Video   *
 ************/
