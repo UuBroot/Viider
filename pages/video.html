@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unknown</title>
+
+  <link rel="stylesheet" href="../style/fonts.css">
+  <link rel="stylesheet" href="../style/main.css">
+  <link rel="stylesheet" href="../style/video.css">
+
+  <script src="../js/video.js" defer></script>
+  <script src="../js/modules.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+
+        <div id="logoBox">
+            <a href="./main.html">
+                <img src="../img/logowhite.png" alt="Viider" id="logo">
+            </a>
+        </div>
+
+        <nav>
+            <div class="selectionBoxes" onclick="closeWindow()">
+                <img src="../img/left-arrow.svg" alt="Back" id="homeImg">
+            </div>
+        </nav>
+
+        <div></div>
+
+    </header>
+
+    <main id="vidMain">
+
+        <div id="leftVidScreen">
+
+            <div id="videoFrame">
+                
+                <video id="videoSrc" src="" onclick="vidplay()" onload="onvideoLoad()"
+                autoplay,
+                poster=""
+                ></video>
+                
+                <div id="videoControlls">
+
+                    <input type="range" min="0" max="1000" step="1" onchange="changeVideoMomentTime()" id="video-timeline">
+                    <input id="vol-control" type="range" min="0" max="100" step="1"  onchange="changevolume()"></input>
+                    <button type="button" name="playVideo" onclick="vidplay()" id="playButton"><img src='/img/play.svg' alt="" id="playButtonImg"></button>
+                    
+                    <div onmouseover="settingsOpen()" onmouseleave="settingsClose()" id="settingsButton">Settings</div>
+                        
+                        <div id="popupsettings">
+                            <div id="qualitysettings"></div>
+                            <button onclick="video_fullscreen()" id="fullscreenbutton">Fullscreen</button>
+                            <button onclick="theatermodeToggle()" id="fullscreenbutton">Theathermode</button>
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                <div id="desHeader"></div>
+                <div id="commands"></div>
+            </div>
+        
+        <div id="rightVidScreen"></div>
+    
+    </main>
+
+</body>
+</html>

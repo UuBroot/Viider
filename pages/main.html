@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Vidder! - Vidder</title>
+
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/front.css">
+    <link rel="stylesheet" href="../style/main.css">
+
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/modules.js" defer></script>
+</head>
+<body>
+
+    <header>
+
+      <div id="logoBox">
+        <a href="./main.html">
+        <img src="/img/logowhite.png" alt="Viider" id="logo">
+        </a>
+      </div>
+
+      <nav>
+        <div class="selectionBoxes" onclick="displayHomePage()">
+            <img src="/img/home.svg" alt="Home" id="homeImg" style="filter: invert(60%);">
+          </div>
+  
+          <div class="selectionBoxes" onclick="displayPlaylistPage()">
+            <img src="/img/flag.svg" alt="Playlists" id="flagImg" style="filter: none;">
+          </div>
+  
+          <div class="selectionBoxes" onclick="displaySubscriptionPage()">
+            <img src="/img/subs.svg" alt="Subscriptions" id="subImg" style="filter: none;">
+          </div>
+      </nav>
+
+
+
+      
+      <div>
+          <div class="searchBox">
+
+            <input class="searchInput" type="text" name="" placeholder="Search" id="searchBar" onmouseover="mouseOverSearch()" onmouseleave="mouseOutSearch()" onkeypress="searchPromptSuggestions()">
+            
+            <button class="searchButton" onclick="searchBarSearch()" style="padding:0px;margin:0px;">
+                
+                <i class="material-icons">
+                    <img src="/img/search.svg" alt="" width="20px">
+                </i>
+            </button>
+
+          </div>
+
+          <div id="searchSuggestions" onmouseover="searchSuggestionsOnMouseOverFunc()" onmouseleave="searchSuggestionsOnMouseLeave()"></div>
+      </div>
+
+    </header>
+
+    <div id="mainBox" class="center-box">
+
+        <div id="sideBar"></div>
+      
+            <main id="main"></main>
+            
+            <footer id="footer">
+                <button onclick="" id="lastPageButton">Last Page</button>
+                <button onclick="" id="nextPageButton">Next Page</button>
+            </footer>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

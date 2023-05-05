@@ -1,0 +1,160 @@
+
+footer {
+    left: 40%;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    width: 20vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**The side bar for playlists**/
+#sideBar {
+    display: none;
+    left: 12vw;
+    top: 7vw;
+    position: absolute;
+    background-color: var(--mainBackground);
+    width: 20vw;
+    height: 75vh;
+}
+
+/*Mains*/
+#mainBox {
+    background-color: var(--mainGlay);
+    border-radius: 10px;
+    
+    width: 80%;
+    height: 83vh;
+
+    overflow: scroll;
+
+    margin-top: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+main {  
+    align-items: center;
+    justify-content: center;
+    grid-row-gap: 4vw;
+    /*HACK:for some reason this needs to be there*/
+    margin-left: 2vw;
+}
+
+/*Search Bar*/
+.searchBox {
+    margin-left: 10vw;
+    width: 240px;
+}
+
+.searchButton {
+    background: var(--mainBorder);
+    color: var(--mainGlay);
+}
+  
+.searchButton {
+    color: white;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #402f37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+  
+.searchInput {
+    border: 1px solid var(--mainBorder);
+    border-radius: 10px;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 80%;
+    background-color: var(--mainBackground);
+}
+  
+#searchSuggestions {
+    display: none;
+    background-color: rgba(95, 19, 61, 0.507);
+    position: absolute;
+    width: 13vw;
+    height: auto;
+    top: 4vw;
+    right: 4.5vw;
+    border-radius: 10px;
+    z-index: 50;
+}
+
+.searchSuggestionMessage {
+    cursor: pointer;
+}
+
+#sortBox {
+    position: absolute;
+    display: grid;
+    justify-content: space-between;
+    top: 6vw;
+    left: 0vw;
+    z-index: 50;
+    background-color: rgba(54, 54, 54, 0.699);
+    width: 10px;
+    height: 20vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+}
+
+#sortBox:hover {
+    width: 7%;
+    padding-left: 0vw;
+    opacity: 1;
+}
+
+/****************
+*   Responsive  *
+****************/
+
+/*Search Boxes*/
+@media only screen and (max-width: 1600px) {
+    .searchBox {
+        margin-left: 7vw;
+    }
+}
+@media only screen and (max-width: 1400px) {
+    .searchBox {
+        margin-left: 4vw;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .searchBox {
+        margin-left: 1vw;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .searchBox {
+        margin-left: -4vw;
+    }
+}
+@media only screen and (max-width: 800px) {
+
+    .searchBox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 95vw;
+    }
+}

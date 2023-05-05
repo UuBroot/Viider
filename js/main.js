@@ -1,9 +1,8 @@
 /*************
  *  Variables *
  *************/
-let colorScheme = 1; //1 == dark 0 == light
 let activePage = "home";
-let activeInstanceUrl = "https://invidious.tiekoetter.com";
+let activeInstanceUrl = "https://y.com.sb";
 let searchBarActive = false;
 let suggestionsMouseOver = false;
 let videoPage = 0;
@@ -13,9 +12,9 @@ let popularApiUrl = "/api/v1/popular";
 /**************
  *  Keydowns *
  *************/
-document.onkeydown = keydown_detected;
+document.onkeyup = keyup_detected;
 
-function keydown_detected(e) {
+function keyup_detected(e) {
   if (!e) {
     e = window.event; //Internet Explorer
   }
@@ -24,7 +23,7 @@ function keydown_detected(e) {
     searchBarSearch();
   }
 }
-/***************
+/**************
  *  Documents *
  **************/
 let homeImg = document.getElementById("homeImg");
@@ -37,82 +36,88 @@ let footer = document.getElementById("footer");
 /*****************
  *  Change Color *
  *****************/
-function changeColorScheme() {
-  //filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
-}
+
 /**********
  *  Scenes *
  **********/
 function displayHomePage() {
+  sideBar.innerText = "";
+  /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "home";
-
+  /*the grid system*/
   main.style.justifyContent = "center";
-  main.style.gridTemplateColumns = "15vw 15vw 15vw 15vw";
-  main.style.right = "-3vw";
-
+  main.setAttribute("class", "fourGridColumn");
+  /*the next button*/
   footer.style.display = "none";
   videoPage = 0;
-
-  sideBar.innerText = "";
+  /*the nav*/
   homeImg.style.filter = "invert(60%)";
   subImg.style.filter = "none";
   sideBar.style.display = "none";
   flagImg.style.filter = "none";
+
   changeMain("home");
 }
 
 function displayPlaylistPage() {
+  sideBar.innerText = "";
+  /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "playlist";
+  /*the grid system*/
+  main.style.justifyContent = "center";
+  main.setAttribute("class", "threeGridColumn");
+  /*The side bar is shown*/
   sideBar.style.display = "block";
-
+  /*the next button*/
   footer.style.display = "none";
   videoPage = 0;
 
-  main.style.justifyContent = "center";
-  main.style.gridTemplateColumns = "15vw 15vw 15vw";
-  main.style.right = "-13vw";
 
-  sideBar.innerText = "";
+  /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
   flagImg.style.filter = "invert(60%)";
+
   changeMain("playlist");
 }
 
 function displaySubscriptionPage() {
+  /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "subscriber";
-
+  /*the grid system*/
   main.style.justifyContent = "center";
-  main.style.gridTemplateColumns = "15vw 15vw 15vw";
-  main.style.right = "-13vw";
-
+  main.setAttribute("class", "threeGridColumn");
+  /*the next button*/
   footer.style.display = "none";
   videoPage = 0;
 
   sideBar.style.display = "block";
   sideBar.innerText = "";
+  /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "invert(60%)";
   flagImg.style.filter = "none";
+
   changeMain("subscriber");
 }
 
 function makeSearchthingBox() {
+  /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "search";
-
+  /*the grid system*/
   main.style.justifyContent = "center";
-  main.style.gridTemplateColumns = "15vw 15vw 15vw 15vw";
-  main.style.right = "-3vw";
-
+  main.setAttribute("class", "fourGridColumn");
+  /*the next button*/
   footer.style.display = "flex";
   videoPage = 0;
-
+  /*The side bar is shown*/
   sideBar.style.display = "none";
   sideBar.innerText = "";
+  /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
   flagImg.style.filter = "none";
@@ -152,12 +157,6 @@ function changeMain(par) {
   }
   getApiData(url);
 }
-/********* open Video *********/
-function openVideo(videoId) {
-  sessionStorage.setItem("videoId", videoId);
-  window.open("videoplayer.html");
-  console.log(videoId);
-}
 /**************
  *  Search Bar *
  **************/
@@ -165,7 +164,6 @@ function mouseOverSearch() {
   searchBarActive = true;
   searchSuggestions.style.display = "block";
 }
-//HACK: settings not desplaying right
 function mouseOutSearch() {
   searchBarActive = false;
   setTimeout(function () {
@@ -196,7 +194,7 @@ function searchBarSearch(pre = "relevance") {
  *************/
 function getApiData(url) {
   console.log("Page: " + videoPage);
-  console.log("url: " + url);
+  console.log("url: " + activeInstanceUrl + url);
   footer.innerHTML = `
     <button onclick="pageChange('left')" id="lastPageButton">Last Page</button>
     <button onclick="pageChange('right')" id="nextPageButton">Next Page</button>
@@ -210,73 +208,75 @@ function getApiData(url) {
         switch (data[i].type) {
           case "video":
             main.innerHTML += `
-            <div id="vid-box" onclick="openVideo('${
-              data[i].videoId
-            }')" style="background-image: url(${
-              data[i].videoThumbnails[4].url
-            });">
+              <div id="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
+                
                 <div id="touchBoxforHover">
-                    <div id="vid-box-footer-box">
-                      <div id="vid-box-footer">
+                    
+                  <div id="vid-box-footer-box">
+                      
+                    <div id="vid-box-footer">
                         <p id="vidTitle">${data[i].title}</p>
+                      <hr>
                         <p>${abbreviateNumber(data[i].viewCount)} Views</p>
-                      </div>
-
-                      <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
-                        <p>${data[i].publishedText}</p>
-                        <p>${calculateTime(data[i].lengthSeconds)}</p>
-                        <p>${data[i].author}</p>
-                      </div>
                     </div>
+
+                    <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                        <p>${data[i].publishedText}</p>
+                      <hr>
+                        <p>${calculateTime(data[i].lengthSeconds)}</p>
+                      <hr>
+                        <p>${data[i].author}</p>
+                    </div>
+                    
+                  </div>
+                
                 </div>
-            </div>
+            
+              </div>
             `;
             break;
           case "playlist":
             main.innerHTML += `
-                    <div id="playlist-box" onclick="" style="background-image: url(${
-                      data[i].playlistThumbnail
-                    });">
-                        <div id="touchBoxforHover">
-                            <div id="vid-box-footer">
-                                <p id="vidTitle">${data[i].title}</p>
-                                <p>${abbreviateNumber(
-                                  data[i].videoCount
-                                )} Videos</p>
-                            </div>
-                        </div>
-                    </div>
+              <div id="playlist-box" onclick="" style="background-image: url(${data[i].playlistThumbnail});">
+                
+                <div id="touchBoxforHover">
+                            
+                  <div id="vid-box-footer">
+                      <p id="vidTitle">${data[i].title}</p>
+                    <hr>
+                      <p>${abbreviateNumber(data[i].videoCount)} Videos</p>
+                  </div>
+                  
+                </div>
+
+              </div>
             `;
             break;
           case "shortVideo":
             // TODO: author page
             main.innerHTML += `
-                    <div id="vid-box" onclick="openVideo('${
-                      data[i].videoId
-                    }')" style="background-image: url(${
-              data[i].videoThumbnails[4].url
-            });">
-                        <div id="touchBoxforHover">
-                            <div id="vid-box-footer-box">
-                              <div id="vid-box-footer">
-                                <p id="vidTitle">${data[i].title}</p>
-                                <p>${abbreviateNumber(
-                                  data[i].viewCount
-                                )} Views</p>
-                              </div>
+              <div id="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
+                
+                <div id="touchBoxforHover">
 
-                              <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
-                                <hr>
-                                <p>${data[i].publishedText}</p>
-                                <hr>
-                                <p>${calculateTime(data[i].lengthSeconds)}</p>
-                                <hr>
-                                <p>${data[i].author}</p>
-                                <hr>
-                              </div>
-                            </div>
-                        </div>
+                  <div id="vid-box-footer-box">
+                  
+                    <div id="vid-box-footer">
+                        <p id="vidTitle">${data[i].title}</p>
+                      <hr>
+                        <p>${abbreviateNumber(data[i].viewCount)} Views</p>
                     </div>
+
+                    <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
+                        <p>${data[i].publishedText}</p>
+                      <hr>
+                        <p>${calculateTime(data[i].lengthSeconds)}</p>
+                      <hr>
+                        <p>${data[i].author}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             `;
             break;
         }

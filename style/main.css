@@ -1,0 +1,223 @@
+/**,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*/
+
+/*******
+* Vars *
+*******/
+:root {
+    --mainPurple: #393136;
+    --mainGlay: rgb(41, 41, 41);
+    --mainBackground: #252525;
+    --mainBorder: #999999;
+}
+
+/*******
+* Main *
+*******/
+html {
+    color-scheme: dark;
+    font-family: monospace;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+button {
+    background-color: var(--mainBackground);
+    padding: 1vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+}
+
+#aButton {
+    background-color: var(--mainBackground);
+    padding: 1em;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    margin-right: 2vw;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--mainPurple);
+    height: 90px;
+    width: 99%;
+    top: 0;
+}
+
+/*Removes the anoying Link style*/
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/*Basic*/
+.flex-box {
+    display: flex;
+    justify-content: space-between;
+}
+.center-box {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    background-color: var(--mainBackground);
+    align-items: center;
+    border-radius: 10px;
+    border: var(--mainBorder) solid 1px;
+    justify-content: space-between;
+    width: 100%;
+}
+/*grids*/
+.fourGridColumn {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.threeGridColumn {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+/***********
+ *  Images *
+ ***********/
+#homeImg {
+    width: 60px;
+}
+  
+#flagImg {
+    width: 30px;
+}
+  
+#subImg {
+    width: 60px;
+}
+
+#logo {
+    width: 120px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/***********
+*   Videos *
+************/
+
+/*Vids in Main and Side bar*/
+#vid-box {
+    background-color: var(--mainGlay);
+    width: 90%;
+    height: 19vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: all 1s;
+}
+  
+#vid-box-footer {
+    background-color: rgba(0, 0, 0, 0.575);
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: space-between;
+    
+    /*thegrid*/
+    grid-template-columns: repeat(7, auto);
+    grid-column-gap: auto;
+}
+
+#vid-box-footer-box {
+    height: 100%;
+}
+
+#playlist-box {
+    background-color: var(--mainGlay);
+    width: 90%;
+    height: 19vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    cursor: pointer;
+  
+    border: rgba(0, 0, 0, 0.83) 10px solid;
+}
+
+
+#touchBoxforHover {
+    opacity: 0;
+    transition: all 0.2s;
+    height: 100%;
+}
+  
+#touchBoxforHover:hover {
+    opacity: 1;
+}
+
+/***************
+*   Responsive *
+***************/
+@media only screen and (max-width: 1800px) {
+    .fourGridColumn {
+        grid-template-columns: auto auto auto;
+    }
+    .threeGridColumn {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .fourGridColumn {
+        grid-template-columns: auto auto;
+    }
+    .threeGridColumn {
+        grid-template-columns: auto;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .fourGridColumn {
+        grid-template-columns: auto;
+    }
+    .threeGridColumn {
+        grid-template-columns: auto;
+    }
+}
+@media only screen and (max-width: 800px) {
+
+    header {
+        padding-top: 3vw;
+        grid-row-gap: 10vw;
+        grid-column-gap: 10vw;
+        grid-template-columns: 25% 50%;
+        padding-left: 2vw;
+        
+    }
+
+    nav {
+        margin-left: -2vw;
+    }
+
+    #mainBox {
+        margin-top: 19vw;
+    }
+}

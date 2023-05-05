@@ -1,0 +1,50 @@
+main {
+    width: 80%;
+    display: grid;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--mainGlay);
+    padding: 1vw;
+    border-radius: 10px;
+}
+
+#banner {
+    width: 100%;
+}
+#chanalSubs {
+    font-size: 20px;
+}
+#chanalImg {
+    width: 50px;
+    height: 50px;
+
+    border: 4px black solid;
+    border-radius: 10px;
+}
+#head {
+    display: flex;
+    margin-top: 3em;
+    justify-content: space-around;
+    width: 100vw;
+}
+#verified {
+    font-size: 30px;
+}
+#mainBox {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-row-gap: 100px;
+
+    background-color: var(--mainGlay);
+    border-radius: 10px;
+    
+    width: 80%;
+
+    overflow: scroll;
+
+    margin-top: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+
+}

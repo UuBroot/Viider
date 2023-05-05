@@ -1,58 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Vidder! - Vidder</title>
-  <link rel="stylesheet" href="/style/style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Vidder! - Vidder</title>
 
-<body>
-  <header>
-    <div id="logoBox">
-      <img src="/img/logowhite.png" alt="Viider" id="logo">
+    <link rel="stylesheet" href="./style/fonts.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+<body>  
+    <header>
+        <div id="logoBox">
+            <img src="./img/logowhite.png" alt="Viider" id="logo">
+        </div>
+        <p> </p>
+        <div>
+            <a id="aButton" href="#features">Feature</a>
+            <a id="aButton" href="#about">About</a>
+            <a id="aButton" href="#donate">Donate</a>
+            <a id="aButton" href="/pages/main.html">Watch Now!</a>
+        </div>
+    </header>
+
+  <main id="indexMain">
+
+    <div class="center-box">
+        <img src="./img/preview.png" alt="" id="previewImg" style="margin-bottom: 10vw;">
+        <img src="./img/logowhite.png" alt="" id="previewImg" style="border: none;">
+        <h1>A private and easy to use Youtube Client.</h1>
     </div>
-    <div id="navBox">
-      <a id="navBoxinner" href="#feature">Feature</a>
-      <a id="navBoxinner" href="#about">About</a>
-      <a id="navBoxinner" href="#donate">Donate</a>
-      <a id="navBoxinner" href="/pages/app/main.html">Watch Now!</a>
+
+    <div id="features">
+        <div class="flex-box">
+          <p>no ads and no personal data being send to google</p>
+          <img src="./img/adblockicon.svg" alt="" id="logo">
+        </div>
+        
+        <div class="flex-box">
+          <img src="./img/ux.webp" alt="" id="logo">
+          <p>more fetures that make the user experiance better</p>
+        </div>
+
+        <div class="flex-box">
+          <p>no account needet to subscribe to chanals</p>
+          <img src="./img/noacc.webp" alt="" id="logo">
+        </div>
+
+        <div class="flex-box">
+          <img src="./img/gitlogo.webp" alt="" id="logo">
+          <p>open source</p>
+        </div>
+
     </div>
-  </header>
-  <main style="display: block; justify-content: none;text-align: center;">
-    <div style="display: grid;grid-template-columns: 100%;justify-content: center;">
-      <img src="/img/preview.png" alt="" id="previewImg" style="margin-bottom: 10vw;">
-      <img src="/img/logowhite.png" alt="" id="previewImg" style="border: none;">
-      <h1>A private and easy to use Youtube Client.</h1>
-    </div>
-    <div id="feature">
-      <div style="display: flex;justify-content: space-between;margin: 1vw;">
-        <p>No ads</p>
-        <img src="/img/adblockicon.svg" alt="" id="logo">
-      </div>
-      <div style="display: flex;justify-content: space-between;margin: 1vw">
-        <img src="/img/logo.png" alt="" id="logo">
-        <p>test</p>
-      </div>
-      <div style="display: flex;justify-content: space-between;margin: 1vw">
-        <p>test</p>
-        <img src="/img/logo.png" alt="" id="logo">
-      </div>
-      <div style="display: flex;justify-content: space-between;">
-        <img src="/img/logo.png" alt="" id="logo">
-        <p>test</p>
-      </div>
-    </div>
+
     <div id="about">
+      <img src="./img/invid.svg" alt="" id="invImg">
       <p>Viider is a frontend to the invimous api whitch is a more private version of the offiziell youtube api. Most of Viiders features are using one of the community hosted Invimous instances. Viider will never show ads nor track the users.</p>
     </div>
-    <div id="donate">
-      <h1>Pls donate</h1>
-      <button>Donate</button>
-    </div>
-  </main>
-</body>
 
+    <div id="donate">
+        <h1>How do we make the money off this?</h1>
+        <p>Simply...We don't. All the money we get are from donations VVV</p>
+        <div id="donateButton"><a href="https://www.paypal.com/paypalme/oasch69" target="_blank">Donate</a></div>
+    </div>
+
+  </main>
+
+</body>
 </html>

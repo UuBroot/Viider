@@ -1,0 +1,181 @@
+/*************
+* Animations *
+*************/
+@keyframes rotatePress {
+    0% {
+      transform: rotate(0deg);
+    }
+    30% {
+      transform: rotate(500deg);
+    }
+    50% {
+      transform: rotate(-40deg);
+    }
+    80% {
+      transform: rotate(40deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+}  
+
+/**THE MAINS**/
+#vidMain {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/*the left and right mains*/
+#rightVidScreen {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 2vw;
+    justify-content: center;
+    overflow: scroll;
+}
+  
+#leftVidScreen {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#videoSrc{
+    height: auto;
+}
+
+#recVidBox {
+    background-color: var(--mainGlay);
+    width: 10vw;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/************
+*   Video   *
+************/
+#videoFrame {
+    position: relative;
+    background-color: black;
+    height: auto;
+    width: auto;
+}
+  
+#desHeader {
+    background-color: #1d0b15;
+    height: auto;
+}
+  
+#videoPlayer {
+    width: 100%;
+    height: 40%;
+}
+  
+video {
+    width: 100%;
+}
+  
+#video-timeline {
+    position: absolute;
+    top: -20%;
+    width: 98%;
+    left: 1%;
+}
+
+/*Controlls*/
+#videoControlls {
+    background-color: rgba(0, 0, 0, 0.72);
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    height: 3vw;
+    width: 100%;
+  
+    opacity: 0;
+    transition: all 0.2s;
+}
+  
+#videoControlls:hover {
+    opacity: 1;
+}
+  
+#playButton {
+    background-color: #ffffff00;
+    border: none;
+}
+  
+#popupsettings {
+    background-color: #050505a9;
+    position: absolute;
+    width: 20vw;
+    height: 15vw;
+    bottom: 3vw;
+    right: 0px;
+  
+    display: none;
+    grid-template-rows: auto auto auto;
+}
+  
+#settingsButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(48, 48, 48);
+    height: 2vw;
+    padding: 10px;
+    margin-right: 1vw;
+}
+  
+#fullscreenbutton {
+    width: 6vw;
+    height: 2.5vw;
+    border-radius: 10px;
+}
+
+/*Fixing css thing*/
+#vid-box {
+    height: 40vh;
+}
+
+/*whatever this is*/
+
+#vidTitle {
+    font-family: vercetty;
+    margin-right: 1vw;
+}
+.descTextClass {
+    padding: 0px;
+}
+
+/*Commands*/
+#comment {
+    display: flex;
+    align-items: center;
+    background-color: #252525;
+    border-radius: 10px;
+    width: 50vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }
+  #commentername {
+    margin-right: 10vw;
+  }
+
+  #shareButton {
+    width: 25px;
+    animation: none;
+  }
+  
+  #playButtonImg {
+    width: 20px;
+  }
+  .selectionBoxes {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
