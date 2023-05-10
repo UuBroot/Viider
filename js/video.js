@@ -228,7 +228,7 @@ function makedescrtiptionandheader(data) {
         <hr>
 
         <div>
-            <p>${formateDescription(data.description)}</p>
+            <p>${formateDescription(data.descriptionHtml)}</p>
         </div>
       
         <div id="commands"></div>

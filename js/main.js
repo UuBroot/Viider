@@ -67,7 +67,7 @@ function displayPlaylistPage() {
   activePage = "playlist";
   /*the grid system*/
   main.style.justifyContent = "center";
-  main.setAttribute("class", "threeGridColumn");
+  main.setAttribute("class", "fourGridColumn");
   /*The side bar is shown*/
   sideBar.style.display = "block";
   /*the next button*/
@@ -89,7 +89,7 @@ function displaySubscriptionPage() {
   activePage = "subscriber";
   /*the grid system*/
   main.style.justifyContent = "center";
-  main.setAttribute("class", "threeGridColumn");
+  main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
   videoPage = 0;
@@ -115,7 +115,7 @@ function makeSearchthingBox() {
   footer.style.display = "flex";
   videoPage = 0;
   /*The side bar is shown*/
-  sideBar.style.display = "none";
+  sideBar.style.display = "block";
   sideBar.innerText = "";
   /*the nav*/
   homeImg.style.filter = "none";
@@ -129,6 +129,7 @@ function makeSearchthingBox() {
             <button onclick="searchBarSearch('view_count')">View Count</button>
         </div>
     `;
+  displayChanalsInSearch();
 }
 
 function changeMain(par) {
@@ -307,7 +308,7 @@ function searchPromptSuggestions() {
       searchSuggestions.innerHTML = "";
       for (let i = 0; i < data.suggestions.length; i++) {
         searchSuggestions.innerHTML += `
-                <p onclick="getApiData('/api/v1/search/?q='+ '${data.suggestions[i]}'), makeSearchthingBox()" class="searchSuggestionMessage">${data.suggestions[i]}</p>
+          <p onclick="getApiData('/api/v1/search/?q='+ '${data.suggestions[i]}'), makeSearchthingBox()" class="searchSuggestionMessage">${data.suggestions[i]}</p>
         `;
       }
     });
@@ -336,6 +337,27 @@ function pageChange(direction) {
   }
 }
 
+function displayChanalsInSearch() {
+  if (document.getElementById("searchBar").value == "") {
+    searchSuggestions.innerHTML = "";
+  }
+
+  fetch(
+    activeInstanceUrl +
+      "/api/v1/channels/search/"+
+      document.getElementById("searchBar").value
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      searchSuggestions.innerHTML = "";
+      for (let i = 0; i < data.suggestions.length; i++) {
+        sideBar.innerHTML += `
+          <p>g</p>
+        `;
+      }
+    });
+}
 /************
  *  Converts *
  ************/

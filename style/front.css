@@ -12,12 +12,11 @@ footer {
 /**The side bar for playlists**/
 #sideBar {
     display: none;
-    left: 12vw;
-    top: 7vw;
-    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
     background-color: var(--mainBackground);
-    width: 20vw;
-    height: 75vh;
+    width: 70vw;
+    height: 10vh;
 }
 
 /*Mains*/
