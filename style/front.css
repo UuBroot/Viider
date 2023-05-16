@@ -138,15 +138,27 @@ main {
     .searchBox {
         margin-left: 4vw;
     }
+    #searchSuggestions {
+        width: 30vw;
+        top: 5vw;
+    }
 }
 @media only screen and (max-width: 1200px) {
     .searchBox {
         margin-left: 1vw;
     }
+
 }
 @media only screen and (max-width: 1000px) {
     .searchBox {
         margin-left: -4vw;
+    }
+
+    #searchSuggestions {
+        width: 95vw;
+        left: 0vw;
+        top: 5vw;
+        position: relative;
     }
 }
 @media only screen and (max-width: 800px) {
@@ -156,4 +168,5 @@ main {
         margin-right: auto;
         width: 95vw;
     }
+
 }

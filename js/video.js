@@ -143,7 +143,7 @@ function getApiData(videoId) {
         for (let i = 0; i < data.formatStreams.length; i++) {
           if(data.formatStreams[i].container == "mp4"){
             document.getElementById("qualitysettings").innerHTML += `
-              <button onclick="changeVideoTo('${data.formatStreams[i].url}')">${data.formatStreams[i].qualityLabel}</button>
+              <button onclick="changeVideoTo('${data.formatStreams[i].url}')" class="videoQualityChangeButton">${data.formatStreams[i].qualityLabel}</button>
             `;
           }
         }
@@ -274,6 +274,15 @@ function makeComments(id) {
 * Video Player *
 ***************/
 
+videoSrc.addEventListener("pause", (event) => {
+  openSettings();
+});
+
+videoSrc.addEventListener("play", (event) => {
+  closeSettings();
+});
+
+
 
 //pauses of stops the video
 function vidplay() {
@@ -288,16 +297,14 @@ function vidplay() {
         canPauseVideo = true;
       },100);
       
-      let button = document.getElementById("playButton");
       console.log(videoIsLoaded);
   
       //changes the button to the correct symbol
+
       if (video.paused && videoIsLoaded == true) {
         video.play();
-        button.innerHTML = `<img src='/img/pause.svg' alt="" id="playButtonImg">`;
       } else {
         video.pause();
-        button.innerHTML = `<img src='/img/play.svg' alt="" id="playButtonImg">`;
       }
     }
 }
@@ -350,6 +357,7 @@ function theatermodeToggle() {
       document.getElementById("videoSrc").style.height = "auto";
       document.getElementById("leftVidScreen").style.marginLeft = "0vw"
     } else {
+      document.getElementById("videoSrc").scrollIntoView() //Scrolls to full screen
       theatermode = true;
       document.getElementById("rightVidScreen").style.display = "none";
       document.getElementById("leftVidScreen").style.width = "90vw";
@@ -359,22 +367,19 @@ function theatermodeToggle() {
 }
   
 ///The video Settings///
-let inSettings = false;
+let inVideoSettings = false;
 
-function settingsOpen() {
-    inSettings = true;
-    document.getElementById("popupsettings").style.display = "grid";
+function openSettings() {
+  document.getElementById("videoControlls").style.display = "flex";
+  inVideoSettings = true;
 }
-  
-function settingsClose() {
-    inSettings = false;
-    setTimeout(function () {
-      if (inSettings == false) {
-        document.getElementById("popupsettings").style.display = "none";
-      }
-    }, 3000);
+
+function closeSettings() {
+  document.getElementById("videoControlls").style.display = "none";
+  inVideoSettings = false;
 }
-  
+//wip
+
 //Changes the Video to a different URL
 function changeVideoTo(url) {
 

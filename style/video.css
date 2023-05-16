@@ -138,14 +138,13 @@ video {
     height: 3vw;
     width: 100%;
   
-    opacity: 0;
+    opacity: 1;
     transition: all 0.2s;
 }
-  
+
 #videoControlls:hover {
-    opacity: 1;
+  background-color: rgb(0, 0, 0);
 }
-  
 #playButton {
     background-color: #ffffff00;
     border: none;
@@ -159,7 +158,7 @@ video {
     bottom: 3vw;
     right: 0px;
   
-    display: none;
+    display: grid;
     grid-template-rows: auto auto auto;
 }
   
@@ -204,19 +203,40 @@ video {
     margin-top: 1vw;
     margin-bottom: 1vw;
   }
-  #commentername {
-    margin-right: 10vw;
-  }
+#commentername {
+  margin-right: 10vw;
+}
 
-  #shareButton {
-    width: 25px;
-    animation: none;
-  }
+#shareButton {
+  width: 25px;
+  animation: none;
+}
   
-  #playButtonImg {
-    width: 20px;
+#playButtonImg {
+   width: 20px;
+}
+
+.selectionBoxes { 
+  padding-left: 1vw; 
+  padding-right: 1vw;
+}
+
+.videoQualityChangeButton{
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width:1000px){
+  #rightVidScreen {
+    display: none;
   }
-  .selectionBoxes {
-    padding-left: 1vw;
-    padding-right: 1vw;
+  #leftVidScreen {
+    width: 100vw;
   }
+  #comment {
+    width: 100vw;
+  }
+  #settingsButton {
+    display: grid;
+  }
+}
