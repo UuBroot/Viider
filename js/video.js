@@ -170,8 +170,9 @@ function getApiData(videoId) {
         //puts in the Videos
 
         for (let i = 0; i < data.recommendedVideos.length; i++) {
-          switch (data.recommendedVideos[i].type) {
-            case "video":
+          console.log(data.recommendedVideos[i].type)
+
+
               document.getElementById("rightVidScreen").innerHTML += `
                 <div id="vid-box" onclick="openVideo('${data.recommendedVideos[i].videoId}')" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url});">
                   
@@ -199,52 +200,9 @@ function getApiData(videoId) {
               
                 </div>
               `;
-              break;
-            case "playlist":
-              document.getElementById("rightVidScreen").innerHTML += `
-                <div id="playlist-box" onclick="" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url})">
-                  
-                  <div id="touchBoxforHover">
-                              
-                    <div id="vid-box-footer">
-                        <p id="vidTitle">${data.recommendedVideos[i].title}</p>
-                      <hr>
-                        <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Videos</p>
-                    </div>
-                    
-                  </div>
-  
-                </div>
-              `;
-              break;
-            case "shortVideo":
-              // TODO: author page
-              document.getElementById("rightVidScreen").innerHTML += `
-                <div id="vid-box" onclick="openVideo('${data.recommendedVideos[i].videoId}')" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url});">
-                  
-                  <div id="touchBoxforHover">
-  
-                    <div id="vid-box-footer-box">
-                    
-                      <div id="vid-box-footer">
-                          <p id="vidTitle">${data.recommendedVideos[i].title}</p>
-                        <hr>
-                          <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
-                      </div>
-  
-                      <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
-                          <p>${data.recommendedVideos[i].publishedText}</p>
-                        <hr>
-                          <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>
-                        <hr>
-                          <p>${data.recommendedVideos[i].author}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              `;
-              break;
-          }
+
+
+              
         }
         //end of fetch
       });
