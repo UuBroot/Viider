@@ -10,6 +10,7 @@ let videoId;
 * Document *
 ***********/
 let video = document.getElementById("videoSrc");
+let preLoad = document.getElementById("preLoad");
 
 /*****************
 * On Window Load *
@@ -21,6 +22,8 @@ window.onload = function () {
 
     //generate Video
     getApiData(videoId);
+
+
 
     //i don't know what this does :(
     readyStateChecker = setInterval(function () {
@@ -124,6 +127,12 @@ function getApiData(videoId) {
     fetch(activeInstanceUrl + "/api/v1/videos/" + videoId)
       .then((response) => response.json())
       .then((data) => {
+        
+        //Checks for wrong Video
+        if(data.error == "Video unavailable"){
+          preLoad.innerHTML = data.error;
+        }
+
         console.log(data);
 
         //set Website Title
@@ -159,27 +168,84 @@ function getApiData(videoId) {
         document.getElementById("rightVidScreen").innerHTML = ``;
 
         //puts in the Videos
+
         for (let i = 0; i < data.recommendedVideos.length; i++) {
-
-            document.getElementById("rightVidScreen").innerHTML += `
+          switch (data.recommendedVideos[i].type) {
+            case "video":
+              document.getElementById("rightVidScreen").innerHTML += `
                 <div id="vid-box" onclick="openVideo('${data.recommendedVideos[i].videoId}')" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url});">
+                  
+                  <div id="touchBoxforHover">
+                      
+                    <div id="vid-box-footer-box">
                         
-                    <div id="touchBoxforHover">
-                            
-                        <div id="vid-box-footer">
-                            <p id="vidTitle">${data.recommendedVideos[i].title}</p>
-                            <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
-                        </div>
-                    
+                      <div id="vid-box-footer">
+                          <p id="vidTitle">${data.recommendedVideos[i].title}</p>
+                        <hr>
+                          <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
+                      </div>
+  
+                      <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                          <p>${data.recommendedVideos[i].publishedText}</p>
+                        <hr>
+                          <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>
+                        <hr>
+                          <p>${data.recommendedVideos[i].author}</p>
+                      </div>
+                      
                     </div>
-                
+                  
+                  </div>
+              
                 </div>
-            `;
+              `;
+              break;
+            case "playlist":
+              document.getElementById("rightVidScreen").innerHTML += `
+                <div id="playlist-box" onclick="" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url})">
+                  
+                  <div id="touchBoxforHover">
+                              
+                    <div id="vid-box-footer">
+                        <p id="vidTitle">${data.recommendedVideos[i].title}</p>
+                      <hr>
+                        <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Videos</p>
+                    </div>
+                    
+                  </div>
+  
+                </div>
+              `;
+              break;
+            case "shortVideo":
+              // TODO: author page
+              document.getElementById("rightVidScreen").innerHTML += `
+                <div id="vid-box" onclick="openVideo('${data.recommendedVideos[i].videoId}')" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url});">
+                  
+                  <div id="touchBoxforHover">
+  
+                    <div id="vid-box-footer-box">
+                    
+                      <div id="vid-box-footer">
+                          <p id="vidTitle">${data.recommendedVideos[i].title}</p>
+                        <hr>
+                          <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
+                      </div>
+  
+                      <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
+                          <p>${data.recommendedVideos[i].publishedText}</p>
+                        <hr>
+                          <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>
+                        <hr>
+                          <p>${data.recommendedVideos[i].author}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              break;
+          }
         }
-
-
-
-
         //end of fetch
       });
 }

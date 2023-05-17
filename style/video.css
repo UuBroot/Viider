@@ -86,13 +86,16 @@
     background-position: center;
 }
 
+#preLoad {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  font-size: 40px;
+  padding: 10px;
+  border: 10px #05050500 solid;
+}
+
 #loading {
-    position: fixed;
-    top: 45%;
-    left: 45%;
-    font-size: 40px;
-    padding: 10px;
-    border: 10px #05050500 solid;
     animation: loading 0.5s linear infinite;
 }
 /************

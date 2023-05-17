@@ -44,8 +44,11 @@
         <div id="leftVidScreen">
             
             <!--Loading-->
-            <p id="loading">-                       -</p>
+            <div id="preLoad">
 
+                <p id="loading">-                       -</p>
+
+            </div>
 
             <div id="videoFrame" data-aos="zoom-in-up">
                 
@@ -64,10 +67,11 @@
                         <div class="flex-box">
                             <div id="qualitysettings"></div>
                         </div>
+                        
                         <div>
 
-                            <button onclick="video_fullscreen()" id="fullscreenbutton">Fullscreen</button>
-                            <button onclick="theatermodeToggle()" id="fullscreenbutton">Theathermode</button>
+                            <button onclick="theatermodeToggle()" id="fullscreenbutton" class="videoQualityChangeButton" style="width: 3vw;"><img src="../img/theatermode.png" alt="" width="30vw"></button>
+                            <button onclick="video_fullscreen()" id="fullscreenbutton" class="videoQualityChangeButton" style="width: 3vw;"><img src="../img/fullscreen.svg" alt="" width="30vw"></button>
 
                         </div>
 
