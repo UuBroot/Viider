@@ -139,7 +139,7 @@ function getApiData(videoId) {
         document.title = data.title;
 
         //PutUrlInVideo
-        document.getElementById("videoSrc").src = data.formatStreams[1].url;
+        document.getElementById("videoSrc").src = data.formatStreams[data.formatStreams.length-1].url; //Checks for the best video quality
   
         //PutInPreview
         document.getElementById("videoSrc").poster = data.videoThumbnails[0].url;
@@ -458,7 +458,7 @@ function creatorPage(url) {
     let urlREALLYtoUse = "";
 
     let numberOfSlash = 0;
-    const NUMBER_OF_SLASH_TO_GO_TO = 3
+    const NUMBER_OF_SLASH_TO_GO_TO = 3 
     for(let i = 0; i < currentUrl.length; i++) {
       if (numberOfSlash>NUMBER_OF_SLASH_TO_GO_TO) {
       //HACK: i don't know but this has to be this way otherwise it doesn't do pages and i don't want to fix it :)
@@ -484,7 +484,7 @@ function creatorPage(url) {
         console.log("/Found: ",slashFound)
       }
       //after / 
-      if(slashFound>=3) { //2 for local hosting 3 for github
+      if(slashFound>=2) { //HACK: 2 for local hosting 3 for github
         console.log(cleanChanalUrl)
         cleanChanalUrl += url.charAt(i);
       }
