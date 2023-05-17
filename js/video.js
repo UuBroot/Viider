@@ -303,8 +303,6 @@ function makedescrtiptionandheader(data) {
 }
 /*ActiveInstance*/
 
-
-
 function makeComments(id) {
     //get active instance url
     let activeInstanceUrl = getActiveInstance();
@@ -519,7 +517,7 @@ function creatorPage(url) {
 
     }
     
-    //No chanals/
+    //No chanals//
     let cleanChanalUrl = "";
     let slashFound = 0; //happens when there is an / found
     for(let i = 0; i < url.length;i++) {
@@ -528,7 +526,7 @@ function creatorPage(url) {
         console.log("/Found: ",slashFound)
       }
       //after / 
-      if(slashFound>=2) {
+      if(slashFound>=3) { //2 for local hosting 3 for github
         console.log(cleanChanalUrl)
         cleanChanalUrl += url.charAt(i);
       }
