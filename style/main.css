@@ -125,7 +125,7 @@ nav {
 #vid-box {
     background-color: var(--mainGlay);
     width: 90%;
-    height: 19vh;
+    height: 200px;
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;

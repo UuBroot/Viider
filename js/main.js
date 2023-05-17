@@ -398,11 +398,6 @@ function makeUserTextGood() {
   return goodText;
 }
 
-function calculateTime(time_s) {
-  var minute = Math.floor(time_s / 60);
-  var rest_seconds = time_s % 60;
-  return minute + "min " + rest_seconds + "s";
-}
 /****************
  *  WindowLoad *
  ****************/

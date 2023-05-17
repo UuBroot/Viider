@@ -178,31 +178,31 @@ function getApiData(videoId) {
                   
                   <div id="touchBoxforHover">
                       
-                    <div id="vid-box-footer-box">
+                  <div id="vid-box-footer-box">
                         
-                      <div id="vid-box-footer">
-                          <p id="vidTitle">${data.recommendedVideos[i].title}</p>
-                        <hr>
-                          <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
-                      </div>
-  
-                      <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
-                          <p>${data.recommendedVideos[i].publishedText}</p>
-                        <hr>
-                          <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>
-                        <hr>
-                          <p>${data.recommendedVideos[i].author}</p>
-                      </div>
-                      
-                    </div>
+                  <div id="vid-box-footer">
+                      <p id="vidTitle">${data.recommendedVideos[i].title}</p>
+                    <hr>
+                      <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
+                  </div>
+
+                  <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                      <p>Recommended</p>
+                      <hr>
+                      <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>
+                      <hr>
+                      <p>${data.recommendedVideos[i].author}</p>
+                  </div>
                   
+                </div>
+              
                   </div>
               
                 </div>
               `;
 
 
-              
+
         }
         //end of fetch
       });

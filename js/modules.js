@@ -2,6 +2,11 @@ function getActiveInstance() {
     return "https://invidious.lunar.icu";  
     //TODO:something isnt working
 }
+function calculateTime(time_s) {
+  var minute = Math.floor(time_s / 60);
+  var rest_seconds = time_s % 60;
+  return minute + "min " + rest_seconds + "s";
+}
 /********* open Video *********/
 function openVideo(videoId) {
 

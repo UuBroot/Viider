@@ -64,9 +64,10 @@
 #rightVidScreen {
     display: grid;
     grid-template-columns: auto;
-    grid-column-gap: 2vw;
+    grid-row-gap: 20px;
     justify-content: center;
     overflow: scroll;
+    margin-left: 4vw;
 }
   
 #leftVidScreen {
