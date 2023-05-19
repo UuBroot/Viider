@@ -115,7 +115,7 @@ function abbreviateNumber(value) {
 }
   
 /************************
-*   Generate the Things * 
+*   Generate the Things *
 ************************/
 function getApiData(videoId) {
     //gets the instants url

@@ -33,6 +33,7 @@ let main = document.getElementById("main");
 let sideBar = document.getElementById("sideBar");
 let searchSuggestions = document.getElementById("searchSuggestions");
 let footer = document.getElementById("footer");
+let moreChannels = document.getElementById("moreChannels");
 /*****************
  *  Change Color *
  *****************/
@@ -54,7 +55,8 @@ function displayHomePage() {
   /*the nav*/
   homeImg.style.filter = "invert(60%)";
   subImg.style.filter = "none";
-  sideBar.style.display = "none";
+  sideBar.style.height = "0px";
+  moreChannels.style.display = "none";
   flagImg.style.filter = "none";
 
   changeMain("home");
@@ -69,7 +71,8 @@ function displayPlaylistPage() {
   main.style.justifyContent = "center";
   main.setAttribute("class", "fourGridColumn");
   /*The side bar is shown*/
-  sideBar.style.display = "block";
+  sideBar.style.height = "500px";
+  moreChannels.style.display = "block";
   /*the next button*/
   footer.style.display = "none";
   videoPage = 0;
@@ -94,7 +97,8 @@ function displaySubscriptionPage() {
   footer.style.display = "none";
   videoPage = 0;
 
-  sideBar.style.display = "block";
+  sideBar.style.height = "500px";
+  moreChannels.style.display = "block";
   sideBar.innerText = "";
   /*the nav*/
   homeImg.style.filter = "none";
@@ -115,7 +119,8 @@ function makeSearchthingBox() {
   footer.style.display = "flex";
   videoPage = 0;
   /*The side bar is shown*/
-  sideBar.style.display = "block";
+  sideBar.style.height = "500px";
+  moreChannels.style.display = "block";
   sideBar.innerText = "";
   /*the nav*/
   homeImg.style.filter = "none";
@@ -196,6 +201,11 @@ function searchBarSearch(pre = "relevance") {
   changeMain("search");
 }
 
+function moreChannels() {
+  document.getElementById("sideBar").style.height = "100%";
+  moreChannels.style.display = "none";
+  document.getElementById("")
+}
 /**************
  *  Api Calls *
  *************/
@@ -344,9 +354,9 @@ function displayChanalsInSearch() {
 
   fetch(
     activeInstanceUrl +
-      "/api/v1/channels/search/"+
+      "/api/v1/search/?q="+
       document.getElementById("searchBar").value+
-      "?type=channel"
+      "&type=channel"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -359,7 +369,15 @@ function displayChanalsInSearch() {
           
         }
         sideBar.innerHTML += `
-          <p>${data[i].author}</p>
+
+          <div class="flex-box">
+
+            <img src="${data[i].authorThumbnails[0].url}">
+
+            <p>${data[i].author}</p>
+          
+          </div>
+          
         `;
       }
     });
