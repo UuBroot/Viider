@@ -132,6 +132,9 @@ function getApiData(videoId) {
         if(data.error == "Video unavailable"){
           preLoad.innerHTML = data.error;
         }
+        else if (data.error == "Sign in if you've been granted access to this video") {
+          preLoad.innerHTML = "Video can't be accsessed.";
+        }
 
         console.log(data);
 
@@ -243,7 +246,7 @@ function makedescrtiptionandheader(data) {
                 
                 <p>${abbreviateNumber(dlikedata.likes)} Likes</p>
                 <p>${abbreviateNumber(dlikedata.dislikes)} Dislikes</p>
-                <img onclick="copyVideo('${data.videoId}')" src="/img/share.svg" alt="Share" id="shareButton"></img>
+                <img onclick="copyVideo()" src="/img/share.svg" alt="Share" id="shareButton"></img>
             
             </div>
       
@@ -425,13 +428,13 @@ function changeVideoTo(url) {
 }
   
 //Copy the video to the clipboard
-function copyVideo(videoLink) {
+function copyVideo() {
     document.getElementById("shareButton").style.animation = "rotatePress 2s";
     setTimeout(function () {
       document.getElementById("shareButton").style.animation = "none";
     }, 2000);
-    console.log("https://www.youtube.com/watch?v=" + videoLink);
-    navigator.clipboard.writeText("https://www.youtube.com/watch?v=" + videoLink);
+    console.log(window.location.href);
+    navigator.clipboard.writeText(window.location.href);
 }
 /*  Timeline  */
 

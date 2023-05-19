@@ -1,5 +1,5 @@
 function getActiveInstance() {
-    return "https://invidious.lunar.icu";  
+    return "https://invidious.lunar.icu";
     //TODO:something isnt working
 }
 function calculateTime(time_s) {

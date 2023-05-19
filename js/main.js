@@ -345,15 +345,21 @@ function displayChanalsInSearch() {
   fetch(
     activeInstanceUrl +
       "/api/v1/channels/search/"+
-      document.getElementById("searchBar").value
+      document.getElementById("searchBar").value+
+      "?type=channel"
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log("---------------channel---------------")
       console.log(data)
       searchSuggestions.innerHTML = "";
-      for (let i = 0; i < data.suggestions.length; i++) {
+
+      for (let i = 0; i < data.length; i++) {
+        if(data[i].type == "channel"){
+          
+        }
         sideBar.innerHTML += `
-          <p>g</p>
+          <p>${data[i].author}</p>
         `;
       }
     });
