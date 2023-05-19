@@ -55,10 +55,12 @@ p {
 }
 
 #buttonBox {
+    margin-left: -20vw;
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-row-gap: 1vw;
 }
+
 #watchButton {
     margin-top: 10vw;
     height: 70px;
