@@ -165,6 +165,9 @@ function changeMain(par) {
   getApiData(url);
 }
 
+function openSettings() {
+  window.location = "../pages/settings.html"
+}
 /**************
  *  Search Bar *
  **************/

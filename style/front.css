@@ -32,6 +32,19 @@ footer {
 .subscriberBox {
     font-style: oblique;
 }
+
+#settings {
+    position: fixed;
+    bottom: 2vw;
+    right: 3vw;
+    transform: rotate(0deg);
+    transition: all 1s;
+}
+
+#settings:hover {
+    transform: rotate(360deg) scale(2);
+}
+
 /*Mains*/
 #mainBox {
     background-color: var(--mainGlay);
