@@ -33,7 +33,7 @@ let main = document.getElementById("main");
 let sideBar = document.getElementById("sideBar");
 let searchSuggestions = document.getElementById("searchSuggestions");
 let footer = document.getElementById("footer");
-let moreChannels = document.getElementById("moreChannels");
+
 /*****************
  *  Change Color *
  *****************/
@@ -43,6 +43,7 @@ let moreChannels = document.getElementById("moreChannels");
  **********/
 function displayHomePage() {
   sideBar.innerText = "";
+  sideBar.style.display = "none";
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "home";
@@ -55,8 +56,6 @@ function displayHomePage() {
   /*the nav*/
   homeImg.style.filter = "invert(60%)";
   subImg.style.filter = "none";
-  sideBar.style.height = "0px";
-  moreChannels.style.display = "none";
   flagImg.style.filter = "none";
 
   changeMain("home");
@@ -64,15 +63,13 @@ function displayHomePage() {
 
 function displayPlaylistPage() {
   sideBar.innerText = "";
+  sideBar.style.display = "block";
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "playlist";
   /*the grid system*/
   main.style.justifyContent = "center";
   main.setAttribute("class", "fourGridColumn");
-  /*The side bar is shown*/
-  sideBar.style.height = "500px";
-  moreChannels.style.display = "block";
   /*the next button*/
   footer.style.display = "none";
   videoPage = 0;
@@ -97,9 +94,8 @@ function displaySubscriptionPage() {
   footer.style.display = "none";
   videoPage = 0;
 
-  sideBar.style.height = "500px";
-  moreChannels.style.display = "block";
   sideBar.innerText = "";
+  sideBar.style.display = "block";
   /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "invert(60%)";
@@ -119,8 +115,7 @@ function makeSearchthingBox() {
   footer.style.display = "flex";
   videoPage = 0;
   /*The side bar is shown*/
-  sideBar.style.height = "500px";
-  moreChannels.style.display = "block";
+  sideBar.style.display = "block";
   sideBar.innerText = "";
   /*the nav*/
   homeImg.style.filter = "none";
@@ -169,6 +164,7 @@ function changeMain(par) {
   }
   getApiData(url);
 }
+
 /**************
  *  Search Bar *
  **************/
@@ -176,6 +172,7 @@ function mouseOverSearch() {
   searchBarActive = true;
   searchSuggestions.style.display = "block";
 }
+
 function mouseOutSearch() {
   searchBarActive = false;
   setTimeout(function () {
@@ -201,11 +198,6 @@ function searchBarSearch(pre = "relevance") {
   changeMain("search");
 }
 
-function moreChannels() {
-  document.getElementById("sideBar").style.height = "100%";
-  moreChannels.style.display = "none";
-  document.getElementById("")
-}
 /**************
  *  Api Calls *
  *************/
@@ -370,11 +362,19 @@ function displayChanalsInSearch() {
         }
         sideBar.innerHTML += `
 
-          <div class="flex-box">
+          <div class="channelBox" onclick="creatorPage('${data[i].authorUrl}')">
 
             <img src="${data[i].authorThumbnails[0].url}">
 
-            <p>${data[i].author}</p>
+            <div>
+            
+              <p class="authorName">${data[i].author}</p>
+
+              <p>${data[i].descriptionHtml}</p>
+
+            </div>
+
+            <p class="subscriberBox">${abbreviateNumber(data[i].subCount)} Subscriber</p> 
           
           </div>
           
@@ -382,6 +382,7 @@ function displayChanalsInSearch() {
       }
     });
 }
+
 /************
  *  Converts *
  ************/

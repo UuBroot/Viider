@@ -1,23 +1,37 @@
 footer {
     left: 40%;
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 20vw;
     justify-content: space-between;
     align-items: center;
 }
 
-/**The side bar for playlists**/
-#sideBar {
-    margin-left: auto;
-    margin-right: auto;
+.channelBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    cursor: pointer;
+    overflow-x: hidden;
+
+    transition: all 0.4s;
+
     background-color: var(--mainBackground);
-    width: 70vw;
-    height: 1000px;
-    overflow-y: hidden;
+
+    padding: 30px;
+    border-radius: 10px;
 }
 
+.channelBox:hover {
+    background-color: var(--mainPurple);
+}
+
+.subscriberBox {
+    font-style: oblique;
+}
 /*Mains*/
 #mainBox {
     background-color: var(--mainGlay);
@@ -41,6 +55,21 @@ main {
     margin-left: 2vw;
 }
 
+#sideBar {
+    overflow-y: scroll;
+    background-color: var(--mainBackground);
+    border: 40px solid var(--mainBackground);
+    border-radius: 10px;
+
+    padding: 30px;
+    margin: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--mainBackground);
+    width: 70vw;
+    height: 300px;
+}
 /*Search Bar*/
 .searchBox {
     margin-left: 10vw;
@@ -122,6 +151,10 @@ main {
     width: 7%;
     padding-left: 0vw;
     opacity: 1;
+}
+
+.authorName {
+    font-size: 20px;
 }
 
 /****************
