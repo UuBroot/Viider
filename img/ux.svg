@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#000000"
+   height="800px"
+   width="800px"
+   version="1.1"
+   id="Icons"
+   viewBox="0 0 32 32"
+   xml:space="preserve"
+   sodipodi:docname="ux.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs7" /><sodipodi:namedview
+   id="namedview5"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="0.9775"
+   inkscape:cx="269.05371"
+   inkscape:cy="483.88747"
+   inkscape:window-width="1920"
+   inkscape:window-height="1011"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Icons" />
+<path
+   d="M23,8H9c-4.4,0-8,3.6-8,8s3.6,8,8,8h14c4.4,0,8-3.6,8-8S27.4,8,23,8z M9,21c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5  S11.8,21,9,21z"
+   id="path2"
+   style="fill:#7b487d;fill-opacity:1" />
+</svg>

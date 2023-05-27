@@ -87,6 +87,9 @@ main {
 .searchBox {
     margin-left: 10vw;
     width: 240px;
+
+    display: grid;
+    grid-template-columns: 100px 120px 20px;
 }
   
 .searchButton {
@@ -115,12 +118,17 @@ main {
     padding: 0;
     padding-left: 5px;
     color: white;
-    font-size: 16px;
+    font-size: auto;
     transition: 0.4s;
     line-height: 40px;
     width: 80%;
     background-color: var(--mainBackground);
+}
 
+#sortType {
+    height: 42px;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 #searchSuggestions {

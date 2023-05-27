@@ -48,19 +48,36 @@
       <div>
           <div class="searchBox">
 
-            <input class="searchInput" type="text" name="" placeholder="Search" id="searchBar" onmouseover="mouseOverSearch()" onmouseleave="mouseOutSearch()" onkeypress="searchPromptSuggestions()">
             
+
+
+            <select name="sortType" id="sortType"> 
+
+                <option value="relevance">Relevance</option> 
+
+                <option value="rating">Rating</option> 
+
+                <option value="upload_date">Date</option> 
+
+                <option value="view_count">View Count</option> 
+
+            </select>
+  
+            <input class="searchInput" type="text" name="" placeholder="Search" id="searchBar" onmouseover="mouseOverSearch()" onmouseleave="mouseOutSearch()" onkeypress="searchPromptSuggestions()">
+
             <button class="searchButton" onclick="searchBarSearch()" style="padding:0px;margin:0px;">
                 
-                <i class="material-icons">
-                    <img src="../img/search.svg" alt="" width="20px">
-                </i>
-                 
-            </button>
+              <i class="material-icons">
+                  <img src="../img/search.svg" alt="" width="20px">
+              </i>
+               
+          </button>
 
-          </div>
+        </div>
 
-          <div id="searchSuggestions" onmouseover="searchSuggestionsOnMouseOverFunc()" onmouseleave="searchSuggestionsOnMouseLeave()"></div>
+        <div id="searchSuggestions" onmouseover="searchSuggestionsOnMouseOverFunc()" onmouseleave="searchSuggestionsOnMouseLeave()"></div>
+
+
       </div>
 
     </header>

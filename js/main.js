@@ -5,8 +5,7 @@ let activePage = "home";
 let activeInstanceUrl = "https://y.com.sb";
 let searchBarActive = false;
 let suggestionsMouseOver = false;
-let videoPage = 0;
-
+let videoPage = 1;
 let popularApiUrl = "/api/v1/popular";
 
 /**************
@@ -52,7 +51,7 @@ function displayHomePage() {
   main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
-  videoPage = 0;
+  videoPage = 1;
   /*the nav*/
   homeImg.style.filter = "invert(60%)";
   subImg.style.filter = "none";
@@ -72,7 +71,7 @@ function displayPlaylistPage() {
   main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
-  videoPage = 0;
+  videoPage = 1;
 
 
   /*the nav*/
@@ -92,7 +91,7 @@ function displaySubscriptionPage() {
   main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
-  videoPage = 0;
+  videoPage = 1;
 
   sideBar.innerText = "";
   sideBar.style.display = "block";
@@ -113,7 +112,7 @@ function makeSearchthingBox() {
   main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "flex";
-  videoPage = 0;
+  videoPage = 1;
   /*The side bar is shown*/
   sideBar.style.display = "block";
   sideBar.innerText = "";
@@ -152,14 +151,17 @@ function changeMain(par) {
       break;
     case "search":
       main.innerHTML += `
-        <h1>Page: ${videoPage + 1}</h1>
+        <h1>Page: ${videoPage}</h1>
       `;
+
       url =
         "/api/v1/search/?q=" +
         makeUserTextGood() +
-        "?sort_by=relevance" +
-        "?page=" +
+        "&sort_by=" + 
+        document.getElementById("sortType").value +
+        "&page=" +
         videoPage;
+
       break;
   }
   getApiData(url);
@@ -195,8 +197,7 @@ function searchSuggestionsOnMouseLeave() {
   searchSuggestions.style.display = "none";
 }
 
-function searchBarSearch(pre = "relevance") {
-  console.log(pre);
+function searchBarSearch() {
   makeSearchthingBox();
   changeMain("search");
 }
@@ -327,7 +328,7 @@ function pageChange(direction) {
         videoPage++;
         changeMain(activePage);
       } else {
-        videoPage = 0;
+        videoPage = 1;
       }
       break;
     case "left":
@@ -335,7 +336,7 @@ function pageChange(direction) {
         videoPage--;
         changeMain(activePage);
       } else {
-        videoPage = 0;
+        videoPage = 1;
       }
       break;
     default:

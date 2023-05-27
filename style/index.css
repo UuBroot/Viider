@@ -93,6 +93,10 @@ p {
     width: 30vw;
 }
 
+.features {
+    height: 10vw;
+}
+
 @media screen and (max-width:1000px){
     #previewImg {
         width: 90vw;

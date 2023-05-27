@@ -13,6 +13,7 @@
     --mainGlay: rgb(41, 41, 41);
     --mainBackground: #252525;
     --mainBorder: #999999;
+    --Purple2: #7b487dff;
 }
 
 /*******
@@ -87,11 +88,19 @@ nav {
     justify-content: space-between;
     width: 100%;
 }
+
+.inline-hr {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 40vw;
+}
+
 /*grids*/
 .fourGridColumn {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
 }
+
 .threeGridColumn {
     display: grid;
     grid-template-columns: auto auto auto;
