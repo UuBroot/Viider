@@ -246,7 +246,7 @@ function makedescrtiptionandheader(data) {
                 
                 <p>${abbreviateNumber(dlikedata.likes)} Likes</p>
                 <p>${abbreviateNumber(dlikedata.dislikes)} Dislikes</p>
-                <img onclick="copyVideo()" src="/img/share.svg" alt="Share" id="shareButton"></img>
+                <img onclick="copyVideo()" src="./img/share.svg" alt="Share" id="shareButton"></img>
             
             </div>
       
