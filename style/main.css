@@ -14,6 +14,7 @@
     --mainBackground: #252525;
     --mainBorder: #999999;
     --Purple2: #7b487dff;
+    --boxshadow: #ffffff26;
 }
 
 /*******
@@ -87,12 +88,29 @@ nav {
     border: var(--mainBorder) solid 1px;
     justify-content: space-between;
     width: 100%;
+    height: 70px;
 }
 
 .inline-hr {
     margin-top: 100px;
     margin-bottom: 100px;
     width: 40vw;
+}
+
+.selectionBoxes {
+    display: flex;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 10px;
+    width: 3vw;
+    height: 70px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.selectionBoxes:hover {
+    background-color: var(--boxshadow);
 }
 
 /*grids*/
