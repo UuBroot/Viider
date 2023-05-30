@@ -395,13 +395,15 @@ function theatermodeToggle() {
 let inVideoSettings = false;
 
 function openSettings() {
-  document.getElementById("videoControlls").style.display = "flex";
+  document.getElementById("videoControlls").style.opacity = "1";
   inVideoSettings = true;
 }
 
 function closeSettings() {
-  document.getElementById("videoControlls").style.display = "none";
-  inVideoSettings = false;
+  if(!video.paused) {
+    document.getElementById("videoControlls").style.opacity = "0";
+    inVideoSettings = false;
+  }
 }
 //wip
 

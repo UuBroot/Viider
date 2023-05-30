@@ -57,7 +57,7 @@
                 poster=""
                 ></video>
                 
-                <div id="videoControlls">
+                <div id="videoControlls" onmouseover="openSettings()" onmouseleave="closeSettings()">
 
                     <input type="range" min="0" max="1000" step="1" onchange="changeVideoMomentTime()" id="video-timeline">
                     <input id="vol-control" type="range" min="0" max="100" step="1"  onchange="changevolume()"></input>
