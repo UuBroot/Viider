@@ -1,3 +1,16 @@
 nav {
     filter:opacity(0.1);
 }
+
+main {
+    width: 50%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    justify-content: center;
+    background-color: var(--mainGlay);
+    margin-top: 3vw;
+    padding: 1vw;
+    border-radius: 10px;
+}

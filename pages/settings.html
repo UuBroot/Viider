@@ -7,10 +7,9 @@
         <title>Welcome to Vidder! - Vidder</title>
     
         <link rel="stylesheet" href="../style/fonts.css">
-        <link rel="stylesheet" href="../style/settings.css">
         <link rel="stylesheet" href="../style/front.css">
         <link rel="stylesheet" href="../style/main.css">
-    
+        <link rel="stylesheet" href="../style/settings.css">
     
         <script src="../js/settings.js" defer></script>
         <script src="../js/modules.js" defer></script>
@@ -43,28 +42,37 @@
             </div>
         </nav>
   
-  
-  
-        
         <div>
-            <div class="searchBox">
-  
-              <input class="searchInput" type="text" name="" placeholder="Search" id="searchBar" onmouseover="mouseOverSearch()" onmouseleave="mouseOutSearch()" onkeypress="searchPromptSuggestions()">
-              
-              <button class="searchButton" onclick="searchBarSearch()" style="padding:0px;margin:0px;">
-                  
-                  <i class="material-icons">
-                      <img src="../img/search.svg" alt="" width="20px">
-                  </i>
-                   
-              </button>
-  
-            </div>
-  
-            <div id="searchSuggestions" onmouseover="searchSuggestionsOnMouseOverFunc()" onmouseleave="searchSuggestionsOnMouseLeave()"></div>
+            
         </div>
   
       </header>
+
+      <main>
+        
+        <div class="flex-box">
+
+          <p>Color Sceam: </p>
+
+          <div>
+            <button>Dark</button>
+            <button>Light</button>
+          </div>
+
+        </div>
+
+        <div class="flex-box">
+
+          <p>Invidious Instance:</p>
+
+          <div>
+            <input type="text" placeholder="https://api.invidious.io/">
+            <button>Submit</button>
+          </div>
+
+        </div>
+
+      </main>
     
 </body>
 </html>
