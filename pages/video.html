@@ -59,22 +59,27 @@
                 
                 <div id="videoControlls" onmouseover="openSettings()" onmouseleave="closeSettings()">
 
+                    <!--Timeline-->
                     <input type="range" min="0" max="1000" step="1" onchange="changeVideoMomentTime()" id="video-timeline">
-                    <input id="vol-control" type="range" min="0" max="100" step="1"  onchange="changevolume()"></input>
+
+                    <!--Volume-->
+                    <div style="padding-left: 2vw;padding-right: 2vw;">
+
+                        <img src="../img/loud.svg" alt="" id="loudnessIcon">
+
+                        <input id="vol-control" type="range" min="0" max="100" step="1"  onchange="changevolume()"></input>
+
+                    </div>
+                    
                         
-                    <div class="flex-box">
+                    <div class="flex-box" >
 
                         <div class="flex-box">
                             <div id="qualitysettings"></div>
                         </div>
                         
-                        <div>
-
-                            <button onclick="theatermodeToggle()" id="fullscreenbutton" class="videoQualityChangeButton" style="width: 3vw;"><img src="../img/theatermode.png" alt="" width="30vw"></button>
-                            <button onclick="video_fullscreen()" id="fullscreenbutton" class="videoQualityChangeButton" style="width: 3vw;"><img src="../img/fullscreen.svg" alt="" width="30vw"></button>
-
-                        </div>
-
+                        <button onclick="theatermodeToggle()" id="fullscreenbutton" class="videoQualityChangeButton" style="width: 3vw;"><img src="../img/theatermode.png" alt="" width="30vw"></button>
+                        <button onclick="video_fullscreen()" id="fullscreenbutton" class="videoQualityChangeButton" style="width: 3vw;"><img src="../img/fullscreen.svg" alt="" width="30vw"></button>
    
                     </div>
                     
