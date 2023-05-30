@@ -27,7 +27,6 @@ window.onload = function () {
 
     //i don't know what this does :(
     readyStateChecker = setInterval(function () {
-        console.log(video.readyState);
         if (video.readyState == 4) {
             onvideoLoad();
         }
@@ -142,10 +141,11 @@ function getApiData(videoId) {
         document.title = data.title;
 
         //PutUrlInVideo
-        document.getElementById("videoSrc").src = data.formatStreams[data.formatStreams.length-1].url; //Checks for the best video quality
+        console.log("url number that put in: ",data.formatStreams.length-1)
+        changeVideoTo(data.formatStreams[data.formatStreams.length-1].url)//Checks for the best video quality
   
         //PutInPreview
-        document.getElementById("videoSrc").poster = data.videoThumbnails[0].url;
+        video.poster = data.videoThumbnails[0].url;
   
         //PutInCaption
         // TODO: Captions
@@ -379,15 +379,15 @@ function theatermodeToggle() {
       theatermode = false;
       document.getElementById("rightVidScreen").style.display = "grid";
       document.getElementById("leftVidScreen").style.width = "100%";
-      document.getElementById("videoSrc").style.height = "auto";
+      video.style.height = "auto";
       document.getElementById("leftVidScreen").style.marginLeft = "0vw"
     } else {
-      document.getElementById("videoSrc").scrollIntoView() //Scrolls to full screen
+      video.scrollIntoView() //Scrolls to full screen
       theatermode = true;
       document.getElementById("rightVidScreen").style.display = "none";
       document.getElementById("leftVidScreen").style.width = "90vw";
       document.getElementById("leftVidScreen").style.marginLeft = "5vw"
-      document.getElementById("videoSrc").style.height = Screen.height+"vw";
+      video.style.height = Screen.height+"vw";
     }
 }
   
@@ -418,8 +418,6 @@ function changeVideoTo(url) {
     video.currentTime = currentTime;
     
     readyStateChecker = setInterval(function () {
-
-        console.log(video.readyState);
         
         if (video.readyState == 4) {
             onvideoLoad();
