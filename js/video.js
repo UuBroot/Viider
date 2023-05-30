@@ -242,11 +242,11 @@ function makedescrtiptionandheader(data) {
           
             </div>
           
-            <div style="display:flex;background-color:#382A38;width:15vw;justify-content:space-between;border-radius:10px;padding:10px;">
+            <div id="smallBoxDesc">
                 
-                <p>${abbreviateNumber(dlikedata.likes)} Likes</p>
-                <p>${abbreviateNumber(dlikedata.dislikes)} Dislikes</p>
-                <img onclick="copyVideo()" src="./img/share.svg" alt="Share" id="shareButton"></img>
+                <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.likes)} <img src="../img/like.svg" width="20vw"></p>
+                <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.dislikes)} <img src="../img/dislike.svg" width="20vw"></p>
+                <img onclick="copyVideo()" src="../img/share.svg" alt="Share" id="shareButton"></img>
             
             </div>
       

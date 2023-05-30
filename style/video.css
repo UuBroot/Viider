@@ -208,6 +208,14 @@ video {
     padding: 0px;
 }
 
+#smallBoxDesc {
+  display:flex;
+  background-color:var(--Purple3);
+  width:15vw;
+  justify-content:space-between;
+  border-radius:10px;
+  padding:10px;
+}
 /*Commands*/
 #comment {
     display: flex;
@@ -252,6 +260,9 @@ video {
     width: 100vw;
   }
   #settingsButton {
+    display: grid;
+  }
+  #smallBoxDesc {
     display: grid;
   }
 }
