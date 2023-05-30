@@ -240,7 +240,7 @@ function getApiData(url) {
                       <hr>
                         <p>${calculateTime(data[i].lengthSeconds)}</p>
                       <hr>
-                        <p>${data[i].author}</p>
+                        <p onclick="creatorPage('${data[i].authorUrl}')" class="authorNamePageButton">${data[i].author}</p>
                     </div>
                     
                   </div>
@@ -287,7 +287,7 @@ function getApiData(url) {
                       <hr>
                         <p>${calculateTime(data[i].lengthSeconds)}</p>
                       <hr>
-                        <p>${data[i].author}</p>
+                        <p onclick="creatorPage('${data[i].authorUrl}')" class="authorNamePageButton">${data[i].author}</p>
                     </div>
                   </div>
                 </div>

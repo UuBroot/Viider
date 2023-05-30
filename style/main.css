@@ -113,6 +113,16 @@ nav {
     background-color: var(--boxshadow);
 }
 
+.authorNamePageButton {
+    z-index: 50;
+    transition: all 0.4s;
+}
+
+.authorNamePageButton:hover {
+    background-color: rgb(34, 34, 34);
+    border: 10px solid #3d3d3d4d;
+}
+
 /*grids*/
 .fourGridColumn {
     display: grid;

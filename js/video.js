@@ -194,7 +194,7 @@ function getApiData(videoId) {
                       <hr>
                       <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>
                       <hr>
-                      <p>${data.recommendedVideos[i].author}</p>
+                      <p onclick="creatorPage('${data.recommendedVideos[i].authorUrl}')" class="authorNamePageButton">${data.recommendedVideos[i].author}</p>
                   </div>
                   
                 </div>
