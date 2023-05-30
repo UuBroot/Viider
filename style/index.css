@@ -79,6 +79,28 @@ p {
     color: aliceblue;
     border: 10px dotted rgb(204, 207, 99);  
 }
+
+#backButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--mainGlay);
+    border-radius: 20px;
+    border: #747474 solid 3px;
+    
+    padding: 15px;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+
+    transition: all 0.4s;
+}
+
+#backButton:hover {
+    transform: scale(0.7);
+    background-color: var(--mainBackground);
+}
+
 /***********
  *  Images *
  ***********/
