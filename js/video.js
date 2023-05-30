@@ -352,7 +352,6 @@ function onvideoLoad() {
     clearInterval(readyStateChecker);
     console.log("VIDEO LOADED");
     videoIsLoaded = true;
-    vidplay();
 
     /*AOS*/
     AOS.refresh();
@@ -449,4 +448,3 @@ function changeVideoMoment() {
 function changeVideoMomentTime() {
     video.currentTime = (document.getElementById("video-timeline").value*video.duration)/1000;
 }
-
