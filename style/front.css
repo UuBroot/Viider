@@ -1,11 +1,38 @@
 footer {
-    left: 40%;
     display: flex;
     position: fixed;
-    bottom: 0px;
-    width: 20vw;
+    bottom: 20px;
     justify-content: space-between;
     align-items: center;
+
+    background-color: var(--mainPurple);;
+    border-radius: 10px;
+    width: 25vw;
+    height: 50px;
+
+    left: 37%;
+    padding: 0.5vw;
+
+    box-shadow: 4px 4px #0000004d;
+}
+
+.pageButton {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 50px;
+    color: var(--mainBorder);
+    font-weight: 1000;
+    border: none;
+    padding: 0;
+    width: 4vw;
+    border-radius: 20px;
+
+    transition: all 0.4s;
+    cursor: pointer;
+
+}
+
+.pageButton:hover {
+    background-color: rgba(0, 0, 0, 0.17);
 }
 
 .channelBox {

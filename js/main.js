@@ -209,8 +209,8 @@ function getApiData(url) {
   console.log("Page: " + videoPage);
   console.log("url: " + activeInstanceUrl + url);
   footer.innerHTML = `
-    <button onclick="pageChange('left')" id="lastPageButton">Last Page</button>
-    <button onclick="pageChange('right')" id="nextPageButton">Next Page</button>
+    <button onclick="pageChange('left')" id="lastPageButton" class="pageButton"><</button>
+    <button onclick="pageChange('right')" id="nextPageButton" class="pageButton">></button>
   `;
 
   fetch(activeInstanceUrl + url)
