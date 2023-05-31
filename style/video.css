@@ -124,28 +124,73 @@ video {
 }
   
 #video-timeline {
-    position: absolute;
-    top: -20%;
-    width: 98%;
-    left: 1%;
-
     height: 10px;
     -webkit-appearance: none;
     background: transparent;
     border-radius: 40px;
     background-color: #05050561;
+    width: 96%;
+}
+
+#video-timeline-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: -50%;
+  width: 100%;
+  left: 1%;
 }
 
 #video-timeline::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
-#video-timelin:focus {
+#video-timeline:focus {
   outline: none; 
 }
 
-#video-timelin::-ms-thumb {
-  width: 1000vw;
+#video-timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+#video-timeline::-ms-thumb {
+  background-color: aliceblue;
+}
+
+/* Special styling for WebKit/Blink */
+#video-timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 10px;
+  border-radius: 3px;
+  background: var(--Purple3);
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+#video-timeline::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 10px;
+  border-radius: 3px;
+  background: var(--Purple3);
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for IE */
+#video-timeline::-ms-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 10px;
+  border-radius: 3px;
+  background: var(--Purple3);
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
 
 /*Controlls*/

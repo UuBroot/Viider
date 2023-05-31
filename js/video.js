@@ -313,8 +313,6 @@ videoSrc.addEventListener("play", (event) => {
   closeSettings();
 });
 
-
-
 //pauses of stops the video
 function vidplay() {
 
@@ -441,10 +439,12 @@ function copyVideo() {
     console.log(window.location.href);
     navigator.clipboard.writeText(window.location.href);
 }
+
+
 /*  Timeline  */
 
 //changes the video timeline to the current moment
-setInterval(changeVideoMoment,1000);
+setInterval(changeVideoMoment,100);
 
 function changeVideoMoment() {
     let currentVidPercentage = (video.currentTime/video.duration)*1000;
@@ -453,4 +453,20 @@ function changeVideoMoment() {
   
 function changeVideoMomentTime() {
     video.currentTime = (document.getElementById("video-timeline").value*video.duration)/1000;
+}
+
+/*  Playlists  */
+
+async function writeVideoToLocalStorage(name, videoid) {
+
+  if(localStorage.getItem("playlists") == undefined) {
+    localStorage.setItem("playlists", {
+
+      name:[
+        videoid
+      ]
+
+    });
+    
+  }
 }
