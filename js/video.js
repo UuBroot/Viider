@@ -147,10 +147,16 @@ function getApiData(videoId) {
         //PutInPreview
         video.poster = data.videoThumbnails[0].url;
   
-        //PutInCaption
-        // TODO: Captions
-        //document.getElementById("videoPlayer").contentDocument.getElementById("videoSrc").document.getElementById('videoTrackCaption').src = data.captions[0].url;
-  
+        //PutInCaption //TODO:Captions
+        console.log(activeInstanceUrl + data.captions[0].url)
+        fetch(activeInstanceUrl + data.captions[0].url)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(JSON.stringify(data))
+          //document.getElementById("videoTrack").src = data
+        })
+        
+        
         //Quality Settings
         for (let i = 0; i < data.formatStreams.length; i++) {
           if(data.formatStreams[i].container == "mp4"){

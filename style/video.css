@@ -128,6 +128,24 @@ video {
     top: -20%;
     width: 98%;
     left: 1%;
+
+    height: 10px;
+    -webkit-appearance: none;
+    background: transparent;
+    border-radius: 40px;
+    background-color: #05050561;
+}
+
+#video-timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+#video-timelin:focus {
+  outline: none; 
+}
+
+#video-timelin::-ms-thumb {
+  width: 1000vw;
 }
 
 /*Controlls*/

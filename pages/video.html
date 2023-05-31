@@ -55,7 +55,9 @@
                 <video id="videoSrc" src="" onclick="vidplay()" onload="onvideoLoad()"
                 autoplay,
                 poster=""
-                ></video>
+                >
+                <track id="videoTrack" src="TED.vtt" kind="subtitles" srclang="en" label="English">
+                </video>
                 
                 <div id="videoControlls" onmouseover="openSettings()" onmouseleave="closeSettings()">
 
