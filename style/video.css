@@ -196,7 +196,7 @@ video {
 #timeBox {
   display: flex;
   text-align: center;
-  width: 3vw;
+  margin-right: 1vw;
 }
 
 /*Controlls*/
@@ -294,7 +294,8 @@ video {
     width: 50vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
-  }
+}
+
 #commentername {
   margin-right: 10vw;
 }

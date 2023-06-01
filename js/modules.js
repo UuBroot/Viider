@@ -4,12 +4,28 @@ function getActiveInstance() {
 }
 
 function calculateTime(time_s, _type) {
-  var minute = Math.floor(time_s / 60);
+  var minute = Math.floor((time_s / 60)%60);
   var rest_seconds = time_s % 60;
-  if(_type == "minimal"){
-    return minute + ":" + rest_seconds;
+  var hour = Math.floor((time_s/60)/60);
+
+  if(hour == 0){
+    if(_type == "minimal"){
+      return minute + ":" + rest_seconds;
+    }
+    else{
+      return minute + "min " + rest_seconds + "s";
+    }
   }
-  return minute + "min " + rest_seconds + "s";
+  else {
+    if(_type == "minimal"){
+      return hour + ":" + minute + ":" + rest_seconds;
+    }
+    else{
+      return hour + "h " + minute + "min " + rest_seconds + "s";
+    }
+  }
+
+
 }
 
 /********* open Video *********/
