@@ -3,9 +3,12 @@ function getActiveInstance() {
     //TODO:something isnt working
 }
 
-function calculateTime(time_s) {
+function calculateTime(time_s, _type) {
   var minute = Math.floor(time_s / 60);
   var rest_seconds = time_s % 60;
+  if(_type == "minimal"){
+    return minute + ":" + rest_seconds;
+  }
   return minute + "min " + rest_seconds + "s";
 }
 

@@ -129,7 +129,7 @@ video {
     background: transparent;
     border-radius: 40px;
     background-color: #05050561;
-    width: 96%;
+    width: 100%;
 }
 
 #video-timeline-box {
@@ -191,6 +191,12 @@ video {
   background: var(--Purple3);
   cursor: pointer;
   margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+#timeBox {
+  display: flex;
+  text-align: center;
+  width: 3vw;
 }
 
 /*Controlls*/

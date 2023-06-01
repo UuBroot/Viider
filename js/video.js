@@ -11,6 +11,7 @@ let videoId;
 ***********/
 let video = document.getElementById("videoSrc");
 let preLoad = document.getElementById("preLoad");
+let videoTime = document.getElementById("videoTime");
 
 /*****************
 * On Window Load *
@@ -156,7 +157,9 @@ function getApiData(videoId) {
           //document.getElementById("videoTrack").src = data
         })
         
-        
+        //Sets Length
+        videoTime.innerHTML = calculateTime(data.lengthSeconds, "minimal");
+
         //Quality Settings
         for (let i = 0; i < data.formatStreams.length; i++) {
           if(data.formatStreams[i].container == "mp4"){
