@@ -11,6 +11,5 @@ function closeSettings() {
 function applySettings() {
     //Color
     document.documentElement.style.mainPurple
-
 }
 

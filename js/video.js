@@ -448,28 +448,10 @@ function copyVideo() {
 
 //changes the video timeline to the current moment
 setInterval(changeVideoMoment,100);
+let urlToUse = "";
+let urlREALLYtoUse = "";
 
-function changeVideoMoment() {
-    let currentVidPercentage = (video.currentTime/video.duration)*1000;
-    document.getElementById("video-timeline").value = currentVidPercentage;
-}
   
 function changeVideoMomentTime() {
     video.currentTime = (document.getElementById("video-timeline").value*video.duration)/1000;
-}
-
-/*  Playlists  */
-
-async function writeVideoToLocalStorage(name, videoid) {
-
-  if(localStorage.getItem("playlists") == undefined) {
-    localStorage.setItem("playlists", {
-
-      name:[
-        videoid
-      ]
-
-    });
-    
-  }
 }

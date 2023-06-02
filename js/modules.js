@@ -102,3 +102,71 @@ function creatorPage(url) {
     window.open(urlREALLYtoUse);
   })()
 }
+
+/**Local Storrage**/
+
+/*  Playlists  */
+
+async function writeVideoToLocalStorage(name, videoid) {
+
+  if(localStorage.getItem("playlists") == undefined) {
+    console.log("creating new playlists")
+
+    localStorage["playlists"] = JSON.stringify(
+      {
+        list:[
+          {
+            "name": name,
+            "ids":[
+              videoid
+            ]
+
+          }
+        ]
+      }
+
+    )
+    
+  }
+  else {
+
+    let json = JSON.parse(localStorage["playlists"])
+    let found = false
+
+    for(let i = 0;i<json.list.length;i++){
+      if(json.list[i].name == name){
+        found = true
+
+        json.list[i].ids.push(videoid)
+      }
+    }
+    if(!found){
+      json.list.push(
+        {
+          "name": name,
+          "ids":[
+            videoid
+          ]
+
+        }
+      )
+    }
+
+
+    localStorage["playlists"] = JSON.stringify(json)
+
+  }
+
+  console.log("written")
+  console.log(JSON.stringify(localStorage.getItem("playlists")))
+  
+}
+
+function readVideoFromLocalStorage() {
+  let json = JSON.parse(localStorage["playlists"]);
+  console.log(json)
+
+  for(let i = 0;i<json.list.length;i++){
+    console.log(json.list[i].name)
+  }
+}
