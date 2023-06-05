@@ -46,7 +46,7 @@
             <!--Loading-->
             <div id="preLoad">
 
-                <p id="loading">-                       -</p>
+                <p id="loading" class="loading">-                       -</p>
 
             </div>
 
@@ -58,12 +58,13 @@
                 >
                 <track id="videoTrack" src="TED.vtt" kind="subtitles" srclang="en" label="English">
                 </video>
-                
+                <p id="loadingVideo" class="loading">-                       -</p>
+
                 <div id="videoControlls" onmouseover="openSettings()" onmouseleave="closeSettings()">
 
                     <!--Timeline-->
                     <div id="video-timeline-box">
-                        <input type="range" min="0" max="1000" step="1" onchange="changeVideoMomentTime()" id="video-timeline">
+                        <input type="range" min="0" max="1000" step="1" oninput="changeVideoMomentTime()" id="video-timeline">
                         
                         <div id="timeBox">
                             <p id="videoTime">0:00</p>
@@ -103,6 +104,18 @@
                 </div>
 
                 <div id="desHeader" data-aos="slide-right" data-aos-duration='400'></div>
+
+                <dialog id="playlistDialog">
+                    <p>Add Video to playlist:</p>
+                    <form method="dialog">
+                        <input type="text" placeholder="name" id="dialogPlaylistName">
+                        <button onclick="addToPlaylist()">Add</button>
+                    </form>
+
+                    <div id="existingPlaylists"></div>
+
+                </dialog>
+
                 <div id="commands"></div>
             </div>
         

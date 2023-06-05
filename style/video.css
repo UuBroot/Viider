@@ -96,9 +96,17 @@
   border: 10px #05050500 solid;
 }
 
-#loading {
+.loading {
     animation: loading 0.5s linear infinite;
 }
+
+#loadingVideo {
+  position: absolute;
+  font-size: 50px;
+  top: 35%;
+  left: 45%;
+}
+
 /************
 *   Video   *
 ************/

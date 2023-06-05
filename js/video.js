@@ -1,7 +1,6 @@
 /***********
 *   Vars   * 
 ***********/
-let videoIsLoaded = false;
 let readyStateChecker;
 let canPauseVideo = true;
 let theatermode = false;
@@ -23,15 +22,6 @@ window.onload = function () {
 
     //generate Video
     getApiData(videoId);
-
-
-
-    //i don't know what this does :(
-    readyStateChecker = setInterval(function () {
-        if (video.readyState == 4) {
-            onvideoLoad();
-        }
-    }, 1000);
 };
 
 
@@ -127,7 +117,7 @@ function getApiData(videoId) {
     fetch(activeInstanceUrl + "/api/v1/videos/" + videoId)
       .then((response) => response.json())
       .then((data) => {
-        
+        onvideoLoad()
         //Checks for wrong Video
         if(data.error == "Video unavailable"){
           preLoad.innerHTML = data.error;
@@ -142,8 +132,13 @@ function getApiData(videoId) {
         document.title = data.title;
 
         //PutUrlInVideo
-        console.log("url number that put in: ",data.formatStreams.length-1)
-        changeVideoTo(data.formatStreams[data.formatStreams.length-1].url)//Checks for the best video quality
+        try {
+          console.log("url number that put in: ",data.formatStreams.length-1)
+          changeVideoTo(data.formatStreams[data.formatStreams.length-1].url)//Checks for the best video quality
+        }catch ({ name, message }){
+          alert("error loading video")
+        }
+
   
         //PutInPreview
         video.poster = data.videoThumbnails[0].url;
@@ -255,6 +250,7 @@ function makedescrtiptionandheader(data) {
                 
                 <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.likes)} <img src="../img/like.svg" width="20vw"></p>
                 <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.dislikes)} <img src="../img/dislike.svg" width="20vw"></p>
+                <p onclick="addToPlaylistButtonPressed()">Add to playlist</p>
                 <img onclick="copyVideo()" src="../img/share.svg" alt="Share" id="shareButton"></img>
             
             </div>
@@ -329,11 +325,10 @@ function vidplay() {
         canPauseVideo = true;
       },100);
       
-      console.log(videoIsLoaded);
   
       //changes the button to the correct symbol
 
-      if (video.paused && videoIsLoaded == true) {
+      if (video.paused && video.readyState == 4) {
         video.play();
       } else {
         video.pause();
@@ -355,10 +350,8 @@ function changevolume() {
   
 //When Video is loaded
 function onvideoLoad() {
-    document.getElementById("loading").style.display = "none"
-    clearInterval(readyStateChecker);
+    document.getElementById("loading").style.display = "none";
     console.log("VIDEO LOADED");
-    videoIsLoaded = true;
 
     /*AOS*/
     AOS.refresh();
@@ -418,19 +411,9 @@ function changeVideoTo(url) {
 
     //TODO: 3gp isn't supported and needs to be converted
     vidplay();
-    videoIsLoaded = false;
     let currentTime = video.currentTime;
     video.src = url;
     video.currentTime = currentTime;
-    
-    readyStateChecker = setInterval(function () {
-        
-        if (video.readyState == 4) {
-            onvideoLoad();
-        }
-
-    }, 1000);
-
 }
   
 //Copy the video to the clipboard
@@ -447,11 +430,61 @@ function copyVideo() {
 /*  Timeline  */
 
 //changes the video timeline to the current moment
-setInterval(changeVideoMoment,100);
-let urlToUse = "";
-let urlREALLYtoUse = "";
+setInterval(changeVideoMoment,1000);
 
+function changeVideoMoment() {
+  console.log(video.currentTime/video.duration* 1000)
+  document.getElementById("video-timeline").value = video.currentTime/video.duration*1000
+}
   
 function changeVideoMomentTime() {
-    video.currentTime = (document.getElementById("video-timeline").value*video.duration)/1000;
+  video.currentTime = Math.floor((document.getElementById("video-timeline").value*video.duration)/1000);
+}
+
+//Checks for if video is loading
+setInterval(function () {
+  console.log("video state: ",video.readyState)
+  if (video.readyState < 4) {
+      document.getElementById("loadingVideo").style.display = "block";
+  }
+  else {
+    document.getElementById("loadingVideo").style.display = "none";
+  }
+}, 1000);
+
+async function addToPlaylistButtonPressed() {
+  document.getElementById("existingPlaylists").innerHTML = "";
+
+  try{
+    let json = JSON.parse(localStorage["playlists"]);
+
+    for(let i = 0;i<json.list.length;i++){
+
+      document.getElementById("existingPlaylists").innerHTML += `
+        <div onclick="addToPlaylist('${json.list[i].name}')">${json.list[i].name}</div>
+      `;
+  
+    }
+  }
+  catch{
+    document.getElementById("existingPlaylists").innerHTML = "No playlists found"
+  }
+
+
+
+
+  document.getElementById("playlistDialog").showModal(); //Shows the dialog
+}
+
+function addToPlaylist(name = document.getElementById("dialogPlaylistName").value) {
+  if(name == ""){
+    alert("no name given")
+  }
+  else{
+    document.getElementById("playlistDialog").close();
+
+    console.log("added to playlist: ", name)
+  
+    writeVideoToLocalStorage(name, videoId);
+  }
 }

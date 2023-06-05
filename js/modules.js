@@ -1,5 +1,6 @@
 function getActiveInstance() {
-    return "https://invidious.lunar.icu";
+    //return "https://invidious.lunar.icu";
+    return "https://inv.tux.pizza";
     //TODO:something isnt working
 }
 
@@ -129,15 +130,27 @@ async function writeVideoToLocalStorage(name, videoid) {
     
   }
   else {
-
-    let json = JSON.parse(localStorage["playlists"])
+    let json = JSON.parse(localStorage["playlists"]);
     let found = false
 
     for(let i = 0;i<json.list.length;i++){
       if(json.list[i].name == name){
+        console.log("playlist allready exists")
         found = true
 
-        json.list[i].ids.push(videoid)
+        //Checks if the id already exists
+        let alreadyExists = false;
+        for(let j = 0;i<json.list[i].ids[j].length;j++){
+          if (json.list[i].ids[j] == videoid){
+            alreadyExists = true;
+            alert("video already exists")
+          }
+        }
+        if(!alreadyExists){
+          console.log("put in video")
+          json.list[i].ids.push(videoid)
+        }
+
       }
     }
     if(!found){

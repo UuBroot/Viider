@@ -2,7 +2,6 @@
  *  Variables *
  *************/
 let activePage = "home";
-let activeInstanceUrl = "https://y.com.sb";
 let searchBarActive = false;
 let suggestionsMouseOver = false;
 let videoPage = 1;
@@ -63,6 +62,7 @@ function displayHomePage() {
 function displayPlaylistPage() {
   sideBar.innerText = "";
   sideBar.style.display = "block";
+  displayPlaylists();
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "playlist";
@@ -207,13 +207,13 @@ function searchBarSearch() {
  *************/
 function getApiData(url) {
   console.log("Page: " + videoPage);
-  console.log("url: " + activeInstanceUrl + url);
+  console.log("url: " + getActiveInstance() + url);
   footer.innerHTML = `
     <button onclick="pageChange('left')" id="lastPageButton" class="pageButton"><</button>
     <button onclick="pageChange('right')" id="nextPageButton" class="pageButton">></button>
   `;
 
-  fetch(activeInstanceUrl + url)
+  fetch(getActiveInstance() + url)
     .then((response) => response.json())
     .then((data) => {
 
@@ -304,7 +304,7 @@ function searchPromptSuggestions() {
     searchSuggestions.innerHTML = "";
   }
   fetch(
-    activeInstanceUrl +
+    getActiveInstance() +
       "/api/v1/search/suggestions?q=" +
       document.getElementById("searchBar").value +
       "page="
@@ -349,7 +349,7 @@ function displayChanalsInSearch() {
   }
 
   fetch(
-    activeInstanceUrl +
+    getActiveInstance() +
       "/api/v1/search/?q="+
       document.getElementById("searchBar").value+
       "&type=channel"
@@ -387,6 +387,63 @@ function displayChanalsInSearch() {
     });
 }
 
+ async function displayPlaylists() {
+  let json = JSON.parse(localStorage["playlists"]);
+  for(let i = 0;i<json.list.length;i++){
+    sideBar.innerHTML += `
+        <p onclick="displayPlaylistVideo('${json.list[i].name}')">${json.list[i].name}</p>
+    `
+  }
+
+}
+
+function displayPlaylistVideo(name){
+  main.innerHTML = "";
+  let json = JSON.parse(localStorage["playlists"]);
+
+
+  for(let i = 0;i<json.list.length;i++){
+    if(json.list[i].name == name){
+
+      for(let j = 0;j<json.list[i].ids.length;j++){
+        fetch(getActiveInstance() + "/api/v1/videos/" + json.list[i].ids[j])
+        .then((response) => response.json())
+        .then((data) => {
+          main.innerHTML += `
+            <div id="vid-box" onclick="openVideo('${data.videoId}')" style="background-image: url(${data.videoThumbnails[4].url});">
+              
+              <div id="touchBoxforHover">
+                  
+                <div id="vid-box-footer-box">
+                    
+                  <div id="vid-box-footer">
+                      <p id="vidTitle">${data.title}</p>
+                    <hr>
+                      <p>${abbreviateNumber(data.viewCount)} Views</p>
+                  </div>
+
+                  <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                      <p>${data.publishedText}</p>
+                    <hr>
+                      <p>${calculateTime(data.lengthSeconds)}</p>
+                    <hr>
+                      <p onclick="creatorPage('${data.authorUrl}')" class="authorNamePageButton">${data.author}</p>
+                  </div>
+                  
+                </div>
+              
+              </div>
+          
+            </div>
+          `;
+        });
+
+      }
+
+    }
+  }
+ 
+}
 /************
  *  Converts *
  ************/
@@ -431,13 +488,8 @@ function makeUserTextGood() {
  *  WindowLoad *
  ****************/
 window.onload = function () {
-  sessionStorage.setItem("activeInstanceUrl", activeInstanceUrl);
   displayHomePage();
 };
-/***********
- *  Playlist *
- **********/
-function newPlaylist() {}
 /*********
  *  Other *
  *********/
