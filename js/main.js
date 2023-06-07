@@ -73,7 +73,6 @@ function displayPlaylistPage() {
   footer.style.display = "none";
   videoPage = 1;
 
-
   /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
@@ -144,7 +143,7 @@ function changeMain(par) {
       url = "/api/v1/popular?page=" + videoPage;
       break;
     case "playlist":
-      url = "/api/v1/popular?page=" + videoPage;
+      url = null;
       break;
     case "subscriber":
       url = "/api/v1/popular?page=" + videoPage;
@@ -164,7 +163,14 @@ function changeMain(par) {
 
       break;
   }
-  getApiData(url);
+
+  try{
+    getApiData(url);
+  }
+  catch{
+    console.log("did not load the videos")
+  }
+
 }
 
 function openSettings() {
@@ -294,6 +300,31 @@ function getApiData(url) {
               </div>
             `;
             break;
+          case "scheduled":
+            main.innerHTML += `
+            <div id="vid-box"  class="scheduledVideo" style="background-image: url(${data[i].videoThumbnails[4].url});">
+                
+            <div id="touchBoxforHover">
+
+              <div id="vid-box-footer-box">
+              
+                <div id="vid-box-footer">
+                    <p id="vidTitle">${data[i].title}</p>
+                  <hr>
+                    <p>${abbreviateNumber(data[i].viewCount)} Views</p>
+                </div>
+
+                <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
+                    <p>${data[i].publishedText}</p>
+                  <hr>
+                    <p>${calculateTime(data[i].lengthSeconds)}</p>
+                  <hr>
+                    <p onclick="creatorPage('${data[i].authorUrl}')" class="authorNamePageButton">${data[i].author}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+            `
         }
       }
     });
@@ -388,18 +419,31 @@ function displayChanalsInSearch() {
 }
 
  async function displayPlaylists() {
-  let json = JSON.parse(localStorage["playlists"]);
+  sideBar.innerHTML = "";
+  let json = JSON.parse(localStorage["Viider"]);
+  if(json.list.length == 0 || json == undefined){
+    sideBar.innerHTML = `
+      no playlists found
+    `
+  }
   for(let i = 0;i<json.list.length;i++){
     sideBar.innerHTML += `
-        <p onclick="displayPlaylistVideo('${json.list[i].name}')">${json.list[i].name}</p>
+        <p class="playlists" id="playlistNr${i}" onclick="displayPlaylistVideo('${json.list[i].name}', ${i})">${json.list[i].name} 
+          <button onclick="deletePlaylist(${i})">X</button>
+        </p>
     `
   }
 
 }
 
-function displayPlaylistVideo(name){
+function displayPlaylistVideo(name, nr){
+  displayPlaylists()
+  //makes the button clicked
+  document.getElementById("playlistNr"+nr).style.backgroundColor = "#1b10106a";
+
+  //the other thing
   main.innerHTML = "";
-  let json = JSON.parse(localStorage["playlists"]);
+  let json = JSON.parse(localStorage["Viider"]);
 
 
   for(let i = 0;i<json.list.length;i++){

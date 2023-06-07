@@ -33,12 +33,6 @@ window.onload = function () {
 function openVideo(videoId) {
     window.open("videoplayer.html");
     console.log(videoId);
-    closeWindow();
-}
-
-//Close the window
-function closeWindow() {
-    window.close();
 }
 
 /** Key Downs **/
@@ -211,6 +205,14 @@ function getApiData(videoId) {
 
 
         }
+
+        //SubButtonChannel
+        
+        setTimeout(function(){
+          document.getElementById("subButton").onclick = writeChanel(data.channelId)
+        },1000)
+
+        
         //end of fetch
       });
 }
@@ -242,10 +244,11 @@ function makedescrtiptionandheader(data) {
                 
                 <img src="${data.authorThumbnails[2].url}" alt="" style="width:40px;height40px;margin-right:1vw;">
                 <p>${data.author}</p>
-                <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;">Subscribe</button>
           
             </div>
-          
+
+            <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton">Subscribe</button>
+
             <div id="smallBoxDesc">
                 
                 <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.likes)} <img src="../img/like.svg" width="20vw"></p>
@@ -456,7 +459,7 @@ async function addToPlaylistButtonPressed() {
   document.getElementById("existingPlaylists").innerHTML = "";
 
   try{
-    let json = JSON.parse(localStorage["playlists"]);
+    let json = JSON.parse(localStorage["Viider"]);
 
     for(let i = 0;i<json.list.length;i++){
 

@@ -1,6 +1,6 @@
 function getActiveInstance() {
     //return "https://invidious.lunar.icu";
-    return "https://inv.tux.pizza";
+    return "https://iv.ggtyler.dev";
     //TODO:something isnt working
 }
 
@@ -52,8 +52,30 @@ function openVideo(videoId) {
     
     urlREALLYtoUse += 'video.html?id=' + videoId;
     console.log(urlREALLYtoUse)
-    window.open(urlREALLYtoUse);
+    window.location.replace(urlREALLYtoUse);
   })()
+}
+function openHome(){
+  let currentUrl = window.location.href;
+  let urlToUse = "";
+  let urlREALLYtoUse = "";
+
+  for(let i = 0; i < currentUrl.length; i++) {
+    if(currentUrl.charAt(i) == "/") {
+      urlToUse += currentUrl.charAt(i);
+      switch(currentUrl.charAt(i+1)) {
+        case 'm': //HACK: the "m" from main but if the url also has an m it doesn't work.
+          urlREALLYtoUse = urlToUse
+      }
+    }
+    else {
+      urlToUse += currentUrl.charAt(i);
+    }
+  }
+  
+  urlREALLYtoUse += 'main.html';
+  console.log(urlREALLYtoUse)
+  window.location.replace(urlREALLYtoUse);
 }
 /**************
 * creatorPage * 
@@ -110,10 +132,10 @@ function creatorPage(url) {
 
 async function writeVideoToLocalStorage(name, videoid) {
 
-  if(localStorage.getItem("playlists") == undefined) {
+  if(localStorage.getItem("Viider") == undefined) {
     console.log("creating new playlists")
 
-    localStorage["playlists"] = JSON.stringify(
+    localStorage["Viider"] = JSON.stringify(
       {
         list:[
           {
@@ -130,7 +152,7 @@ async function writeVideoToLocalStorage(name, videoid) {
     
   }
   else {
-    let json = JSON.parse(localStorage["playlists"]);
+    let json = JSON.parse(localStorage["Viider"]);
     let found = false
 
     for(let i = 0;i<json.list.length;i++){
@@ -140,7 +162,8 @@ async function writeVideoToLocalStorage(name, videoid) {
 
         //Checks if the id already exists
         let alreadyExists = false;
-        for(let j = 0;i<json.list[i].ids[j].length;j++){
+        for(let j = 0;i<json.list[i].ids.length;j++){
+
           if (json.list[i].ids[j] == videoid){
             alreadyExists = true;
             alert("video already exists")
@@ -166,20 +189,86 @@ async function writeVideoToLocalStorage(name, videoid) {
     }
 
 
-    localStorage["playlists"] = JSON.stringify(json)
+    localStorage["Viider"] = JSON.stringify(json)
 
   }
 
   console.log("written")
-  console.log(JSON.stringify(localStorage.getItem("playlists")))
+  console.log(JSON.stringify(localStorage.getItem("Viider")))
   
 }
 
 function readVideoFromLocalStorage() {
-  let json = JSON.parse(localStorage["playlists"]);
+  let json = JSON.parse(localStorage["Viider"]);
   console.log(json)
 
   for(let i = 0;i<json.list.length;i++){
     console.log(json.list[i].name)
   }
+}
+
+function downloadPlaylistFile(){
+  const link = document.createElement("a");
+  const file = new Blob([JSON.stringify(JSON.stringify(localStorage["Viider"]) , null, 2)], {
+    type: "application/json",
+  });
+  link.href = URL.createObjectURL(file);
+  link.download = "Viider-Backup-"+Date+".json";
+}
+
+function deletePlaylist(nr){
+  let json = JSON.parse(localStorage["Viider"]);
+  json.list.splice(nr, 1);
+  localStorage["Viider"] = JSON.stringify(json);
+}
+/**************
+ * Subscriber *
+ *************/
+
+
+async function writeChanel(chanalId) {
+
+  if(localStorage.getItem("Viider") == undefined) {
+
+    localStorage["Viider"] = JSON.stringify(
+      {
+        subChan:[
+          {
+            "id":chanalId
+          }
+        ]
+      }
+
+    )
+    
+  }
+  else {
+    if(localStorage["Viider"].subChan == undefined){
+//TODO:generates the subChael
+    }
+    else {
+      let json = JSON.parse(localStorage["Viider"]);
+      let found = false
+  
+      for(let i = 0;i<json.subChanlength;i++){
+        if(json.subChan[i].id == chanalId){
+          found = true
+          alert("already subscribed")
+        }
+      }
+      if(!found){
+        json.subChan.push(
+          {
+            "id":chanalId
+          }
+        )
+      }
+    }
+   
+
+
+    localStorage["Viider"] = JSON.stringify(json)
+
+  }
+
 }

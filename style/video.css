@@ -107,6 +107,10 @@
   left: 45%;
 }
 
+header {
+  position: sticky;
+  z-index: 60;
+}
 /************
 *   Video   *
 ************/

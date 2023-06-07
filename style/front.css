@@ -72,6 +72,27 @@ footer {
     transform: rotate(360deg) scale(2);
 }
 
+.scheduledVideo {
+    border: 10px solid black;
+}
+
+.playlists {
+    background-color: #00000019;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.playlists:hover {
+    background-color: #0000004a;
+    height: 60px;
+    border: var(--mainPurple) solid 10px;
+}
+
 /*Mains*/
 #mainBox {
     background-color: var(--mainGlay);
