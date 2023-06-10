@@ -1,6 +1,6 @@
 function getActiveInstance() {
     //return "https://invidious.lunar.icu";
-    return "https://iv.ggtyler.dev";
+    return "https://vid.puffyan.us";
     //TODO:something isnt working
 }
 
