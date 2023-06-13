@@ -111,14 +111,14 @@ header {
   position: sticky;
   z-index: 60;
   height: 30px;
-  opacity: 0.5;
-  filter: brightness(0.4);
+  opacity: 0.1;
+  filter: contrast(0);
   overflow: hidden;
   transition: all 0.3s;
 }
 
 header:hover {
-  filter: brightness(1);
+  filter: contrast(1);
   height: 90px;
   opacity: 1;
 }

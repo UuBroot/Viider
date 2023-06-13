@@ -5,7 +5,7 @@ let activePage = "home";
 let searchBarActive = false;
 let suggestionsMouseOver = false;
 let videoPage = 1;
-let popularApiUrl = "/api/v1/popular";
+let activeInstance;
 
 /**************
  *  Keydowns *
@@ -213,13 +213,13 @@ function searchBarSearch() {
  *************/
 function getApiData(url) {
   console.log("Page: " + videoPage);
-  console.log("url: " + getActiveInstance() + url);
+  console.log("url: " + activeInstance + url);
   footer.innerHTML = `
     <button onclick="pageChange('left')" id="lastPageButton" class="pageButton"><</button>
     <button onclick="pageChange('right')" id="nextPageButton" class="pageButton">></button>
   `;
 
-  fetch(getActiveInstance() + url)
+  fetch(activeInstance + url)
     .then((response) => response.json())
     .then((data) => {
 
@@ -335,7 +335,7 @@ function searchPromptSuggestions() {
     searchSuggestions.innerHTML = "";
   }
   fetch(
-    getActiveInstance() +
+    activeInstance +
       "/api/v1/search/suggestions?q=" +
       document.getElementById("searchBar").value +
       "page="
@@ -380,7 +380,7 @@ function displayChanalsInSearch() {
   }
 
   fetch(
-    getActiveInstance() +
+    activeInstance +
       "/api/v1/search/?q="+
       document.getElementById("searchBar").value+
       "&type=channel"
@@ -450,7 +450,7 @@ function displayPlaylistVideo(name, nr){
     if(json.list[i].name == name){
 
       for(let j = 0;j<json.list[i].ids.length;j++){
-        fetch(getActiveInstance() + "/api/v1/videos/" + json.list[i].ids[j])
+        fetch(activeInstance + "/api/v1/videos/" + json.list[i].ids[j])
         .then((response) => response.json())
         .then((data) => {
           main.innerHTML += `
@@ -532,8 +532,15 @@ function makeUserTextGood() {
  *  WindowLoad *
  ****************/
 window.onload = function () {
-  displayHomePage();
+  asyncWindowLoad();
 };
+
+async function asyncWindowLoad(){
+  activeInstance = await getActiveInstance();
+
+  console.log("active instalce: ",activeInstance)
+  displayHomePage();
+}
 /*********
  *  Other *
  *********/

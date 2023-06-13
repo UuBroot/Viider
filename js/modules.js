@@ -1,7 +1,19 @@
-function getActiveInstance() {
-    //return "https://invidious.lunar.icu";
-    return "https://vid.puffyan.us";
-    //TODO:something isnt working
+async function getActiveInstance() {
+  try {
+    const response = await fetch("https://api.invidious.io/instances.json?pretty=1&sort_by=type,users");
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const data = await response.json();
+    const activeInstance = data.find(instance => instance[1].api);
+    return new Promise((resolve, reject) => {
+      // Fetch data and resolve the promise with the fetched data
+      resolve(activeInstance ? activeInstance[1].uri : null);
+    });
+  } catch (error) {
+    console.error(`Could not get active instance: ${error}`);
+    return null;
+  }
 }
 
 function calculateTime(time_s, _type) {

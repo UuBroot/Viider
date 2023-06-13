@@ -1,6 +1,14 @@
 let chanalId;
+let activeInstance;
 
+async function asyncWindowLoad(){
+  activeInstance = await getActiveInstance();
 
+  console.log("active instalce: ",activeInstance)
+
+  //generate Video    
+  callApi(chanalId);
+}
 
 //Close the window
 function closeWindow() {
@@ -11,11 +19,9 @@ function closeWindow() {
 *   Api Call   *
 ***************/
 function callApi(chanalId) {
-    let activeInstanceUrl = getActiveInstance();
-    console.log("Active Instance: "+activeInstanceUrl);
   
-    console.log(activeInstanceUrl + "/api/v1/channels" + chanalId)
-    fetch(activeInstanceUrl + "/api/v1/channels" + chanalId)
+    console.log(activeInstance + "/api/v1/channels" + chanalId);
+    fetch(activeInstance + "/api/v1/channels" + chanalId)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -24,14 +30,13 @@ function callApi(chanalId) {
 }
 
 window.onload = function () {
-    //make params
-    let params = new URLSearchParams(document.location.search);
-    chanalId = params.get('id')
+  asyncWindowLoad()
 
-    console.log(chanalId);
+  //make params
+  let params = new URLSearchParams(document.location.search);
+  chanalId = params.get('id')
 
-    //generate Video    
-    callApi(chanalId);
+  console.log(chanalId);
 };
 
 /*********

@@ -5,6 +5,7 @@ let readyStateChecker;
 let canPauseVideo = true;
 let theatermode = false;
 let videoId;
+let activeInstance;
 /***********
 * Document *
 ***********/
@@ -16,14 +17,20 @@ let videoTime = document.getElementById("videoTime");
 * On Window Load *
 ******************/
 window.onload = function () {
-    //make params
-    let params = new URLSearchParams(document.location.search);
-    videoId = params.get('id')
-
-    //generate Video
-    getApiData(videoId);
+  asyncWindowLoad()
+  //make params
+  let params = new URLSearchParams(document.location.search);
+  videoId = params.get('id')
 };
 
+async function asyncWindowLoad(){
+  activeInstance = await getActiveInstance();
+
+  console.log("active instalce: ",activeInstance)
+
+  //generate Video
+  getApiData(videoId);
+}
 
 /************
 * Functions *
@@ -102,13 +109,11 @@ function abbreviateNumber(value) {
 *   Generate the Things *
 ************************/
 function getApiData(videoId) {
-    //gets the instants url
-    let activeInstanceUrl = getActiveInstance()
-    console.log("Active Instance: "+activeInstanceUrl);
+    console.log("Active Instance: "+activeInstance);
 
-    console.log(activeInstanceUrl + "/api/v1/videos/" + videoId)
+    console.log(activeInstance + "/api/v1/videos/" + videoId)
   
-    fetch(activeInstanceUrl + "/api/v1/videos/" + videoId)
+    fetch(activeInstance + "/api/v1/videos/" + videoId)
       .then((response) => response.json())
       .then((data) => {
         onvideoLoad()
@@ -138,8 +143,8 @@ function getApiData(videoId) {
         video.poster = data.videoThumbnails[0].url;
   
         //PutInCaption //TODO:Captions
-        console.log(activeInstanceUrl + data.captions[0].url)
-        fetch(activeInstanceUrl + data.captions[0].url)
+        console.log(activeInstance + data.captions[0].url)
+        fetch(activeInstance + data.captions[0].url)
         .then((response) => response.json())
         .then((data) => {
           console.log(JSON.stringify(data))
@@ -270,12 +275,9 @@ function makedescrtiptionandheader(data) {
         `;
       })
 }
-/*ActiveInstance*/
 
 function makeComments(id) {
-    //get active instance url
-    let activeInstanceUrl = getActiveInstance();
-    fetch(activeInstanceUrl + "/api/v1/comments/" + id)
+    fetch(activeInstance + "/api/v1/comments/" + id)
         .then((response) => response.json())
         .then((data) => {
         console.log(data);
@@ -295,7 +297,7 @@ function makeComments(id) {
 
         //more comments
         document.getElementById("commands").innerHTML += `
-            <button onclick="makeCommants(${id+data.continuation})">more</button>
+            <button onclick="makeCommants('${data.continuation}')">more</button>
         `;
         
       });
