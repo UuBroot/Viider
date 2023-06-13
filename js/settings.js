@@ -15,7 +15,10 @@ function applySettings() {
 
 function downloadJson(){
     let exportObj = localStorage["Viider"];
-    let exportName = "download";
+    let currentDate = new Date;
+    var language = window.navigator.userLanguage || window.navigator.language;
+
+    let exportName = "Viider-Backup-" + currentDate.toLocaleString(language);
 
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
     var downloadAnchorNode = document.createElement('a');
@@ -61,4 +64,4 @@ function uploadJson() {
     }
     
     input.click();
-}    
+}
