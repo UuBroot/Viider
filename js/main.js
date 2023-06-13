@@ -429,7 +429,7 @@ function displayChanalsInSearch() {
   for(let i = 0;i<json.list.length;i++){
     sideBar.innerHTML += `
         <p class="playlists" id="playlistNr${i}" onclick="displayPlaylistVideo('${json.list[i].name}', ${i})">${json.list[i].name} 
-          <button onclick="deletePlaylist(${i})">X</button>
+          <button onclick="deletePlaylist(${i})" class="deletePlaylistButton">X</button>
         </p>
     `
   }
