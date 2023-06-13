@@ -84,6 +84,27 @@
           
         </div>
 
+        <div class="flex-box">
+
+          <p>Data</p>
+
+          <div class="flex-box">
+            
+            <button onclick="openUpload()">Upload</button>
+
+            <dialog id="uploadDialog">
+              <p>Drag backup here!</p>
+
+              <div id="dragBox" onclick="uploadJson()">Drag</div>
+              
+            </dialog>
+
+            <button onclick="downloadJson()">Download</button>
+
+          </div>
+
+        </div>
+
       </main>
     
 </body>

@@ -72,7 +72,7 @@ function displayPlaylistPage() {
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
-
+  
   /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
