@@ -165,22 +165,26 @@ async function writeVideoToLocalStorage(name, videoid) {
   }
   else {
     let json = JSON.parse(localStorage["Viider"]);
-    let found = false
+    let found = false;
 
     for(let i = 0;i<json.list.length;i++){
       if(json.list[i].name == name){
         console.log("playlist allready exists")
         found = true
 
+
         //Checks if the id already exists
         let alreadyExists = false;
+/* Does things double i don't know if i like it
         for(let j = 0;i<json.list[i].ids.length;j++){
 
           if (json.list[i].ids[j] == videoid){
             alreadyExists = true;
             alert("video already exists")
           }
+
         }
+*/
         if(!alreadyExists){
           console.log("put in video")
           json.list[i].ids.push(videoid)
@@ -199,7 +203,6 @@ async function writeVideoToLocalStorage(name, videoid) {
         }
       )
     }
-
 
     localStorage["Viider"] = JSON.stringify(json)
 

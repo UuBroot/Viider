@@ -135,6 +135,8 @@ footer {
     margin-top: 1vw;
     padding-top: 1vw;
     padding-bottom: 1vw;
+
+    overflow-x: hidden;
 }
 
 main {
@@ -144,7 +146,6 @@ main {
     justify-content: center;
     grid-row-gap: 30px;
     margin-left: 25px;
-
 }
 
 #sideBar {
@@ -294,6 +295,12 @@ main {
     }
 }
 @media only screen and (max-width: 800px) {
+
+    #sideBar {
+        height: 100px;
+        width: 50vw;
+        padding: 3px;
+    }
 
     .searchBox {
         margin-left: auto;
