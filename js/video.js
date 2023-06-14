@@ -258,7 +258,10 @@ function makedescrtiptionandheader(data) {
                 
                 <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.likes)} <img src="../img/like.svg" width="20vw"></p>
                 <p style="display:flex;align-items:center">${abbreviateNumber(dlikedata.dislikes)} <img src="../img/dislike.svg" width="20vw"></p>
-                <p onclick="addToPlaylistButtonPressed()">Add to playlist</p>
+                <p onclick="addToPlaylistButtonPressed()" id="addToPlaylistButton">
+                  <img src="../img/flag.svg" width="10px" style="margin-right:10px">
+                  Add to playlist
+                </p>
                 <img onclick="copyVideo()" src="../img/share.svg" alt="Share" id="shareButton"></img>
             
             </div>

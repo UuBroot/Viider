@@ -317,17 +317,45 @@ video {
     width: 50vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
+
 }
 
 #commentername {
   margin-right: 10vw;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+#commentername:hover {
+  transform: scaleY(1.1);
+  text-decoration: underline;
 }
 
 #shareButton {
   width: 25px;
   animation: none;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-  
+
+#shareButton:hover {
+  transform: rotate(30deg);
+}
+
+#addToPlaylistButton{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+#addToPlaylistButton:hover {
+  box-shadow: black 2px 2px 10px;
+  transform: scale(1.01);
+}
+
 #playButtonImg {
    width: 20px;
 }
