@@ -107,14 +107,6 @@ function makeSearchthingBox() {
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
   flagImg.style.filter = "none";
-  main.innerHTML = `
-        <div id="sortBox">
-            <button onclick="searchBarSearch('relevance')">Relevance</button>
-            <button onclick="searchBarSearch('rating')">Rating</button>
-            <button onclick="searchBarSearch('upload_date')">Upload Date</button>
-            <button onclick="searchBarSearch('view_count')">View Count</button>
-        </div>
-    `;
   displayChanalsInSearch();
 }
 

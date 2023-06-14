@@ -175,6 +175,7 @@ async function writeVideoToLocalStorage(name, videoid) {
 
         //Checks if the id already exists
         let alreadyExists = false;
+        
 /* Does things double i don't know if i like it
         for(let j = 0;i<json.list[i].ids.length;j++){
 

@@ -3,6 +3,7 @@ nav {
 }
 
 main {
+    display: block;
     width: 50%;
 
     margin-left: auto;
