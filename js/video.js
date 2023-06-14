@@ -243,16 +243,17 @@ function makedescrtiptionandheader(data) {
         
         </div>
       
-        <div style="display: flex;justify-content: space-between;">
+        <div id="descriptionFooter">
           
             <div style="display:flex;align-items:center;" onclick="creatorPage('${data.authorUrl}')">
                 
                 <img src="${data.authorThumbnails[2].url}" alt="" style="width:40px;height40px;margin-right:1vw;">
                 <p>${data.author}</p>
-          
+                <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton">Subscribe</button>
+                
             </div>
 
-            <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton">Subscribe</button>
+
 
             <div id="smallBoxDesc">
                 

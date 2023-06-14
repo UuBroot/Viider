@@ -77,6 +77,12 @@
     margin-right: auto;
 }
 
+#descriptionFooter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 #videoSrc{
     height: auto;
 }
@@ -304,10 +310,11 @@ video {
 #smallBoxDesc {
   display:flex;
   background-color:var(--Purple3);
-  width:15vw;
+  width:30vw;
   justify-content:space-between;
   border-radius:10px;
   padding:10px;
+  align-items: center;
 }
 /*Commands*/
 #comment {
@@ -369,6 +376,15 @@ video {
 .videoQualityChangeButton{
   border: none;
   background-color: rgba(0, 0, 0, 0);
+}
+
+#videoTime {
+  color: white;
+  text-shadow:
+      0.07em 0 black,
+      0 0.07em black,
+      -0.07em 0 black,
+      0 -0.07em black;
 }
 
 @media screen and (max-width:1000px){
