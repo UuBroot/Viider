@@ -254,7 +254,7 @@ a {
     }
 
 }
-
+/*TODO:Fixing mobile not working*/
 @media (pointer:none), (pointer:coarse) {
     #touchBoxforHover {
         opacity: 1;
