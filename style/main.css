@@ -254,3 +254,9 @@ a {
     }
 
 }
+
+@media (pointer:none), (pointer:coarse) {
+    #touchBoxforHover {
+        opacity: 1;
+    }
+}
