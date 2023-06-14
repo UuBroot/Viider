@@ -140,78 +140,57 @@ function creatorPage(url) {
 
 /**Local Storrage**/
 
-/*  Playlists  */
-
-async function writeVideoToLocalStorage(name, videoid) {
-
-  if(localStorage.getItem("Viider") == undefined) {
-    console.log("creating new playlists")
+function checkLocalStorrage(){
+  if(localStorage["Viider"]== undefined) {
 
     localStorage["Viider"] = JSON.stringify(
       {
         list:[
-          {
-            "name": name,
-            "ids":[
-              videoid
-            ]
 
-          }
+        ],
+        subChan:[
+
         ]
       }
 
     )
-    
   }
-  else {
-    let json = JSON.parse(localStorage["Viider"]);
-    let found = false;
+}
 
-    for(let i = 0;i<json.list.length;i++){
-      if(json.list[i].name == name){
-        console.log("playlist allready exists")
-        found = true
+/*  Playlists  */
 
+async function writeVideoToLocalStorage(name, videoid) {
+  await checkLocalStorrage();
 
-        //Checks if the id already exists
-        let alreadyExists = false;
-        
-/* Does things double i don't know if i like it
-        for(let j = 0;i<json.list[i].ids.length;j++){
+  let json = JSON.parse(localStorage["Viider"]);
+  let found = false;
 
-          if (json.list[i].ids[j] == videoid){
-            alreadyExists = true;
-            alert("video already exists")
-          }
+  for(let i = 0;i<json.list.length;i++){
 
-        }
-*/
-        if(!alreadyExists){
-          console.log("put in video")
-          json.list[i].ids.push(videoid)
-        }
+    if(json.list[i].name == name){
+      console.log("playlist allready exists")
+      found = true
+      json.list[i].ids.push(videoid)
+    }
+
+  }
+
+  if(!found){
+    json.list.push(
+      {
+        "name": name,
+        "ids":[
+          videoid
+        ]
 
       }
-    }
-    if(!found){
-      json.list.push(
-        {
-          "name": name,
-          "ids":[
-            videoid
-          ]
-
-        }
-      )
-    }
-
-    localStorage["Viider"] = JSON.stringify(json)
-
+    )
   }
 
+  localStorage["Viider"] = JSON.stringify(json)
   console.log("written")
   console.log(JSON.stringify(localStorage.getItem("Viider")))
-  
+
 }
 
 function readVideoFromLocalStorage() {
@@ -242,49 +221,28 @@ function deletePlaylist(nr){
  *************/
 
 
-async function writeChanel(chanalId) {
+async function writeChanel(chanalId = "4343", name = "herbert") {
+  await checkLocalStorrage();
 
-  if(localStorage.getItem("Viider") == undefined) {
+  let json = JSON.parse(localStorage["Viider"]);
+  let found = false;
 
-    localStorage["Viider"] = JSON.stringify(
+  for(let i = 0;i<json.subChan.length;i++){
+    if(json.subChan[i].chanalId == chanalId){
+      found = true;
+
+      //TODO:Remove Chanel
+      alert("already subscribed")
+    }
+  }
+
+  if(!found){
+    json.subChan.push(
       {
-        subChan:[
-          {
-            "id":chanalId
-          }
-        ]
+        name: name,
+        chanalId: chanalId
       }
-
     )
-    
   }
-  else {
-    if(localStorage["Viider"].subChan == undefined){
-//TODO:generates the subChael
-    }
-    else {
-      let json = JSON.parse(localStorage["Viider"]);
-      let found = false
-  
-      for(let i = 0;i<json.subChanlength;i++){
-        if(json.subChan[i].id == chanalId){
-          found = true
-          alert("already subscribed")
-        }
-      }
-      if(!found){
-        json.subChan.push(
-          {
-            "id":chanalId
-          }
-        )
-      }
-    }
-   
-
-
-    localStorage["Viider"] = JSON.stringify(json)
-
-  }
-
+  localStorage["Viider"] = JSON.stringify(json);
 }

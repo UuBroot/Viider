@@ -48,6 +48,8 @@ function displayHomePage() {
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
+  main.display = "block";
+  sideBar.style.height = "300px";
   /*the nav*/
   homeImg.style.filter = "invert(60%)";
   subImg.style.filter = "none";
@@ -59,30 +61,33 @@ function displayHomePage() {
 function displayPlaylistPage() {
   sideBar.innerText = "";
   sideBar.style.display = "block";
-  displayPlaylists();
+
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "playlist";
   /*the next button*/
   footer.style.display = "none";
+  main.display = "block";
   videoPage = 1;
-  
+  sideBar.style.height = "300px";
   /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
   flagImg.style.filter = "invert(60%)";
 
-  changeMain("playlist");
+  displayPlaylists();
 }
 
 function displaySubscriptionPage() {
   /*changes main and activePage*/
   main.innerHTML = "";
+  main.display = "none";
   activePage = "subscriber";
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
 
+  sideBar.style.height = "600px";
   sideBar.innerText = "";
   sideBar.style.display = "block";
   /*the nav*/
@@ -90,7 +95,7 @@ function displaySubscriptionPage() {
   subImg.style.filter = "invert(60%)";
   flagImg.style.filter = "none";
 
-  changeMain("subscriber");
+  displaySubs();
 }
 
 function makeSearchthingBox() {
@@ -103,6 +108,8 @@ function makeSearchthingBox() {
   /*The side bar is shown*/
   sideBar.style.display = "block";
   sideBar.innerText = "";
+  sideBar.style.height = "300px";
+  main.display = "block";
   /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
@@ -126,7 +133,7 @@ function changeMain(par) {
       url = null;
       break;
     case "subscriber":
-      url = "/api/v1/popular?page=" + videoPage;
+      url = null;
       break;
     case "search":
       main.innerHTML += `
@@ -401,7 +408,7 @@ function displayChanalsInSearch() {
  async function displayPlaylists() {
   sideBar.innerHTML = "";
   let json = JSON.parse(localStorage["Viider"]);
-  if(json == undefined){
+  if(json.list == undefined){
     sideBar.innerHTML = `
       no playlists found
     `
@@ -414,6 +421,26 @@ function displayChanalsInSearch() {
     `
   }
 
+}
+
+async function displaySubs(){
+
+  let json = JSON.parse(localStorage["Viider"]);
+  console.log(json)
+
+  if(json.subChan == undefined){
+    sideBar.innerHTML = `
+      no subscribers found
+    `
+  }
+
+  for(let i = 0;i<json.subChan.length;i++){
+
+    sideBar.innerHTML += `
+      <p onclick="creatorPage('/channel/${json.subChan[i].chanalId}')">${json.subChan[i].name}</p>
+    `
+
+  }
 }
 
 function displayPlaylistVideo(name, nr){

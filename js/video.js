@@ -250,7 +250,7 @@ function makedescrtiptionandheader(data) {
                 <img src="${data.authorThumbnails[2].url}" alt="" style="width:40px;height40px;margin-right:1vw;">
                 <p>${data.author}</p>
                 <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton">Subscribe</button>
-                
+
             </div>
 
 
