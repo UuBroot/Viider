@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 512 512"
+   version="1.1"
+   sodipodi:docname="favcon.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="185.96908"
+     inkscape:cy="366.28131"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <title
+     id="title2">play-glyph</title>
+  <path
+     d="M 36.26743,512 C 17.031687,512 1.9565482,498.14 1.9565482,480.44 V 31.55 C 1.9678234,13.86 17.031687,0 36.278705,0 A 37.140995,32.94 0 0 1 54.826652,4.52 L 493.0994,229 c 11.42193,5.85 18.24351,16 18.24351,27 0,11 -6.76521,21.2 -18.24351,27 L 54.826652,507.48 A 37.118443,32.92 0 0 1 36.278705,512 Z"
+     fill="#434040"
+     id="path4"
+     style="fill:#000000;fill-opacity:0.14902;stroke-width:1.06185" />
+  <path
+     style="fill:#7b487d;fill-opacity:1"
+     d="m 171.30725,63.701748 171.58124,88.349272 0.004,207.93078 -171.58755,87.83904"
+     id="path1894"
+     sodipodi:nodetypes="cccc" />
+</svg>
