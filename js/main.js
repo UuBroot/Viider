@@ -45,9 +45,6 @@ function displayHomePage() {
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "home";
-  /*the grid system*/
-  main.style.justifyContent = "center";
-  main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
@@ -66,9 +63,6 @@ function displayPlaylistPage() {
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "playlist";
-  /*the grid system*/
-  main.style.justifyContent = "center";
-  main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
@@ -85,9 +79,6 @@ function displaySubscriptionPage() {
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "subscriber";
-  /*the grid system*/
-  main.style.justifyContent = "center";
-  main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
@@ -106,9 +97,6 @@ function makeSearchthingBox() {
   /*changes main and activePage*/
   main.innerHTML = "";
   activePage = "search";
-  /*the grid system*/
-  main.style.justifyContent = "center";
-  main.setAttribute("class", "fourGridColumn");
   /*the next button*/
   footer.style.display = "flex";
   videoPage = 1;
@@ -421,7 +409,7 @@ function displayChanalsInSearch() {
  async function displayPlaylists() {
   sideBar.innerHTML = "";
   let json = JSON.parse(localStorage["Viider"]);
-  if(json.list.length == 0 || json == undefined){
+  if(json == undefined){
     sideBar.innerHTML = `
       no playlists found
     `

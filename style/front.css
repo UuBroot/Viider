@@ -1,29 +1,34 @@
+/*********************
+* Change Page Button *
+**********************/
+
+/*When searching change the page*/
 footer {
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     position: fixed;
     bottom: 20px;
     justify-content: space-between;
     align-items: center;
 
-    background-color: var(--mainPurple);;
+    background-color: var(--mainPurple);
     border-radius: 10px;
     width: 25vw;
     height: 50px;
 
     left: 37%;
     padding: 0.5vw;
-
-    box-shadow: 4px 4px #0000004d;
 }
-
+/*The button to change page in search mode*/
 .pageButton {
     background-color: rgba(0, 0, 0, 0);
-    font-size: 50px;
+    font-size: 30px;
     color: var(--mainBorder);
     font-weight: 1000;
     border: none;
     padding: 0;
-    width: 4vw;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
 
     transition: all 0.4s;
@@ -32,6 +37,9 @@ footer {
 }
 
 .pageButton:hover {
+    border: none;
+    border-radius: 10px;
+
     background-color: rgba(0, 0, 0, 0.17);
 }
 
@@ -56,26 +64,33 @@ footer {
     background-color: var(--mainPurple);
 }
 
+.authorName {
+    font-size: 20px;
+}
+
+/*TODO:Subbox style*/
 .subscriberBox {
     font-style: oblique;
 }
 
+/*The settings Button*/
 #settings {
     position: fixed;
-    bottom: 2vw;
-    right: 3vw;
+    bottom: -45px;
+    right: -45px;
     transform: rotate(0deg);
     transition: all 1s;
+    cursor: pointer;
+    padding: 0;
 }
 
 #settings:hover {
     transform: rotate(360deg) scale(2);
 }
 
-.scheduledVideo {
-    border: 10px solid black;
-}
-
+/****************
+*   Playlists   * on playlist page
+*****************/
 .playlists {
     background-color: #00000019;
     height: 80px;
@@ -108,12 +123,12 @@ footer {
 }
 
 /*Mains*/
-#mainBox {
+#mainBox { /*Makes the main block smaller*/
     background-color: var(--mainGlay);
     border-radius: 10px;
     
     width: 80%;
-    height: 83vh;
+    height: 85vh;
 
     overflow: scroll;
 
@@ -122,12 +137,14 @@ footer {
     padding-bottom: 1vw;
 }
 
-main {  
-    align-items: center;
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
     justify-content: center;
-    grid-row-gap: 4vw;
-    /*HACK:for some reason this needs to be there*/
-    margin-left: 2vw;
+    grid-row-gap: 30px;
+    margin-left: 25px;
+
 }
 
 #sideBar {
@@ -145,7 +162,8 @@ main {
     width: 70vw;
     height: 300px;
 }
-/*Search Bar*/
+
+/*Search Bar*//* TODO:New design
 .searchBox {
     margin-left: 10vw;
     width: 240px;
@@ -153,7 +171,7 @@ main {
     display: grid;
     grid-template-columns: 100px 120px 20px;
 }
-  
+
 .searchButton {
     color: var(--mainGlay);
     float: right;
@@ -236,9 +254,7 @@ main {
     opacity: 1;
 }
 
-.authorName {
-    font-size: 20px;
-}
+
 
 /****************
 *   Responsive  *
@@ -285,4 +301,15 @@ main {
         width: 95vw;
     }
 
+    #mainBox {
+        margin-top: 4vw;
+        height: 70vh;
+    }
+
+}
+
+@media only screen and (max-height: 1000px) {
+    #mainBox {
+        height: 70vh;
+    }
 }

@@ -21,6 +21,7 @@
 /*******
 * Main *
 *******/
+
 html {
     color-scheme: dark;
     font-family: monospace;
@@ -34,11 +35,23 @@ body {
 
 button {
     background-color: var(--mainBackground);
-    padding: 1vw;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
+    padding: 13px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 13px;
+    transition: all 0.1s;
+    cursor: pointer;
 }
 
+button:hover{
+    border: var(--Purple2) 2px solid;
+    transform: scale(0.9);
+    box-shadow: black 3px 3px 30px;
+}
+
+/*
 #aButton {
     background-color: var(--mainBackground);
     padding: 1em;
@@ -47,25 +60,28 @@ button {
     margin-right: 1vw;
     width: 80px;
 }
-
-header {
+*/
+header{
     display: grid;
-    grid-template-columns: 25% 25% 25%;
-
-    padding-left: 10px;
-    padding-right: 10px;
+    grid-template-columns: 25% 30% 25%;
+    padding: 10px;
     align-items: center;
     justify-content: space-between;
     background-color: var(--mainPurple);
-    height: 90px;
-    width: 99%;
+
     top: 0;
 }
 
-/*Removes the anoying Link style*/
-a {
-    text-decoration: none;
-    color: white;
+nav {
+    display: flex;
+    background-color: var(--mainBackground);
+    align-items: center;
+    border-radius: 10px;
+    border: var(--mainBorder) solid 1px;
+    justify-content: space-between;
+    height: 70px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 /*Basic*/
@@ -81,24 +97,8 @@ a {
     justify-content: center;
 }
 
-nav {
-    display: flex;
-    background-color: var(--mainBackground);
-    align-items: center;
-    border-radius: 10px;
-    border: var(--mainBorder) solid 1px;
-    justify-content: space-between;
-    width: 100%;
-    height: 70px;
-}
-
-.inline-hr {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 40vw;
-}
-
-.selectionBoxes {
+/*The items of the nav bar*/
+.selectionBoxes { 
     display: flex;
     cursor: pointer;
     transition: all 0.4s;
@@ -114,6 +114,7 @@ nav {
     background-color: var(--boxshadow);
 }
 
+/*Going to author button*/
 .authorNamePageButton {
     z-index: 50;
     transition: all 0.4s;
@@ -124,16 +125,7 @@ nav {
     border: 10px solid #3d3d3d4d;
 }
 
-/*grids*/
-.fourGridColumn {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-}
 
-.threeGridColumn {
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
 /***********
  *  Images *
  ***********/
@@ -156,9 +148,9 @@ nav {
     padding: 5px;
 }
 
-/***********
-*   Videos *
-************/
+/********************
+*   Types of Video  *
+********************/
 
 /*Vids in Main and Side bar*/
 #vid-box {
@@ -171,7 +163,7 @@ nav {
     cursor: pointer;
     transition: all 1s;
 }
-  
+
 #vid-box-footer {
     background-color: rgba(0, 0, 0, 0.575);
 
@@ -202,43 +194,47 @@ nav {
     border: rgba(0, 0, 0, 0.83) 10px solid;
 }
 
+.scheduledVideo {
+    border: 10px solid black;
+}
 
+/*makes the details show when hovering on a video*/
 #touchBoxforHover {
     opacity: 0;
     transition: all 0.2s;
     height: 100%;
 }
-  
+
 #touchBoxforHover:hover {
     opacity: 1;
+}
+
+/************
+*   Fixes   *
+*************/
+/*Removes the anoying Link style*/
+a {
+    text-decoration: none;
+    color: white;
 }
 
 /***************
 *   Responsive *
 ***************/
 @media only screen and (max-width: 1800px) {
-    .fourGridColumn {
-        grid-template-columns: auto auto auto;
-    }
-    .threeGridColumn {
-        grid-template-columns: auto auto;
+    main {
+        grid-template-columns: 34% 34% 34%;
     }
 }
 
 @media only screen and (max-width: 1400px) {
-    .fourGridColumn {
-        grid-template-columns: auto auto;
-    }
-    .threeGridColumn {
-        grid-template-columns: auto;
+    main {
+        grid-template-columns: 50% 50%;
     }
 }
 
 @media only screen and (max-width: 1000px) {
-    .fourGridColumn {
-        grid-template-columns: auto;
-    }
-    .threeGridColumn {
+    main {
         grid-template-columns: auto;
     }
 }
@@ -257,7 +253,4 @@ nav {
         margin-left: -2vw;
     }
 
-    #mainBox {
-        margin-top: 19vw;
-    }
 }

@@ -213,9 +213,9 @@ function getApiData(videoId) {
 
         //SubButtonChannel
         
-        setTimeout(function(){
-          document.getElementById("subButton").onclick = writeChanel(data.channelId)
-        },1000)
+        //setTimeout(function(){
+        //  document.getElementById("subButton").onclick = writeChanel(data.channelId)
+        //},1000)
 
         
         //end of fetch
