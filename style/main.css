@@ -62,6 +62,7 @@ button:hover{
 }
 */
 header{
+    height: 72px;
     display: grid;
     grid-template-columns: 25% 30% 25%;
     padding: 10px;
@@ -117,12 +118,14 @@ nav {
 /*Going to author button*/
 .authorNamePageButton {
     z-index: 50;
+
     transition: all 0.4s;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0);
 }
 
 .authorNamePageButton:hover {
-    background-color: rgb(34, 34, 34);
-    border: 10px solid #3d3d3d4d;
+    text-decoration-color: rgb(255, 255, 255);
 }
 
 
