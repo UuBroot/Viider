@@ -221,7 +221,7 @@ function deletePlaylist(nr){
  *************/
 
 
-async function writeChanel(chanalId = "4343", name = "herbert") {
+async function writeChanel(chanalId , name) {
   await checkLocalStorrage();
 
   let json = JSON.parse(localStorage["Viider"]);

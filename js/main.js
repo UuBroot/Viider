@@ -437,7 +437,7 @@ async function displaySubs(){
   for(let i = 0;i<json.subChan.length;i++){
 
     sideBar.innerHTML += `
-      <p onclick="creatorPage('/channel/${json.subChan[i].chanalId}')">${json.subChan[i].name}</p>
+      <p onclick="creatorPage('//${json.subChan[i].chanalId}')">${json.subChan[i].name}</p>
     `
 
   }

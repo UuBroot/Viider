@@ -212,11 +212,8 @@ function getApiData(videoId) {
         }
 
         //SubButtonChannel
-        
-        //setTimeout(function(){
-        //  document.getElementById("subButton").onclick = writeChanel(data.channelId)
-        //},1000)
 
+        document.getElementById('subButton').setAttribute( "onClick", `writeChanel('${data.authorUrl}')` );
         
         //end of fetch
       });
@@ -245,10 +242,10 @@ function makedescrtiptionandheader(data) {
       
         <div id="descriptionFooter">
           
-            <div style="display:flex;align-items:center;" onclick="creatorPage('${data.authorUrl}')">
+            <div style="display:flex;align-items:center;" >
                 
-                <img src="${data.authorThumbnails[2].url}" alt="" style="width:40px;height40px;margin-right:1vw;">
-                <p>${data.author}</p>
+                <img src="${data.authorThumbnails[2].url}" alt="" style="width:40px;height40px;margin-right:1vw;" onclick="creatorPage('${data.authorUrl}')">
+                <p onclick="creatorPage('${data.authorUrl}')">${data.author}</p>
                 <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton">Subscribe</button>
 
             </div>
