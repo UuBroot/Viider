@@ -307,8 +307,13 @@ video {
   
 #fullscreenbutton {
     width: 60px;
-    height: 2.5vw;
+    height: 60px;
     border-radius: 10px;
+}
+
+#screenBoxButton {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 /*whatever this is*/
