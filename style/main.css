@@ -104,7 +104,7 @@ nav {
     cursor: pointer;
     transition: all 0.4s;
     border-radius: 10px;
-    width: 3vw;
+    width: 60px;
     height: 70px;
 
     align-items: center;
@@ -234,13 +234,11 @@ a {
     }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 800px) {
+
     main {
         grid-template-columns: auto;
     }
-
-}
-@media only screen and (max-width: 800px) {
 
     header {
         padding-top: 3vw;
