@@ -129,6 +129,8 @@ function generate(data) {
       console.log("creation time")
     }
 
+    //SubButton
+    document.getElementById("subscribeBell").setAttribute("onclick", `writeChanel('${data.authorId}', '${data.author}')`);
 
     //Verified
 
@@ -147,19 +149,19 @@ function generate(data) {
           switch (data.latestVideos[i].type) {
             case "video":
               main.innerHTML += `
-                <div id="vid-box" onclick="openVideo('${data.latestVideos[i].videoId}')" style="background-image: url(${data.latestVideos[i].videoThumbnails[4].url});">
+                <div class="vid-box" onclick="openVideo('${data.latestVideos[i].videoId}')" style="background-image: url(${data.latestVideos[i].videoThumbnails[4].url});">
                   
-                  <div id="touchBoxforHover">
+                  <div class="touchBoxforHover">
                       
-                    <div id="vid-box-footer-box">
+                    <div class="vid-box-footer-box">
                         
-                      <div id="vid-box-footer">
+                      <div class="vid-box-footer">
                           <p id="vidTitle">${data.latestVideos[i].title}</p>
                         <hr>
                           <p>${abbreviateNumber(data.latestVideos[i].viewCount)} Views</p>
                       </div>
   
-                      <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                      <div class="vid-box-footer" style="bottom:0px;position:absolute  ;">
                           <p>${data.latestVideos[i].publishedText}</p>
                         <hr>
                           <p>${calculateTime(data.latestVideos[i].lengthSeconds)}</p>

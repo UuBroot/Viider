@@ -73,6 +73,18 @@ footer {
     font-style: oblique;
 }
 
+.unsubscribeButton {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all 0.4s;
+    cursor: pointer;
+    height: 35px;
+}
+
+.unsubscribeButton:hover {
+    transform: scale(2);
+}
+
 /*The settings Button*/
 #settings {
     position: fixed;

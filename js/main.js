@@ -4,6 +4,7 @@
 let activePage = "home";
 let videoPage = 1;
 let activeInstance;
+let searchBarActive = false;
 
 /**************
  *  Keydowns *
@@ -14,7 +15,7 @@ function keyup_detected(e) {
   if (!e) {
     e = window.event; //Internet Explorer
   }
-  if (e.keyCode == 13 && searchBarActive == true) {
+  if (e.keyCode == 13 && searchBarActive) {
     // ENTER
     searchBarSearch();
   }
@@ -170,11 +171,15 @@ searchInput.addEventListener("focus", function (){
 
   searchSuggestions.style.display = "block";
 
+  searchBarActive = true;
+
 });
 
 searchInput.addEventListener("focusout", function (){
 
   searchSuggestions.style.display = "none";
+
+  searchBarActive = false;
   
 });
 /**************
@@ -191,10 +196,11 @@ function getApiData(url) {
   fetch(activeInstance + url)
     .then((response) => response.json())
     .then((data) => {
-
-      //Does the other things
       console.log(data);
       let string = "";
+      if(data.length == 0) {
+        string = "No Videos Found"
+      }
       for (let i = 0; i < data.length; i++) {
         switch (data[i].type) {
           case "video":
@@ -365,6 +371,9 @@ function displayChanalsInSearch() {
       searchSuggestions.innerHTML = "";
 
       let string = "";
+      if(data.length == 0) {
+        string = "No Channels Found"
+      }
       for (let i = 0; i < data.length; i++) {
         if(data[i].type == "channel"){
 
@@ -475,7 +484,7 @@ function displayPlaylistVideo(name, nr){
 
 function displayChanalName(name, chanalId, subCount, profilePic){
   sideBar.innerHTML += `
-    <div style="display:flex">
+    <div style="display:flex;align-items:center">
 
       <div onclick="creatorPage('//${chanalId}')" class="creatorButton">
 
@@ -486,7 +495,7 @@ function displayChanalName(name, chanalId, subCount, profilePic){
         <img src="${profilePic}" class="profilePicFromSubscribed">
 
       </div>
-      <button onclick="deleteChanal('${chanalId}')">X</button>
+      <button onclick="deleteChanal('${chanalId}')" class="unsubscribeButton">X</button>
     
     </div>
   `
@@ -546,6 +555,8 @@ function printSubscribedVideos(){
   setTimeout(function(){
   
     let string = "";
+
+    string += "Latest videos:"
 
     for(let i = 0;i<videoArray.length;i++){
 

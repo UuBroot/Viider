@@ -34,6 +34,16 @@ text-align: center;
 #verified {
     font-size: 30px;
 }
+#subscribeBell {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+#subscribeBell:hover {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    transform: scale(1.2);
+}
 #mainBox {
     display: grid;
     grid-template-columns: 33% 33% 33%;
