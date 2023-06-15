@@ -24,7 +24,8 @@
 
 html {
     color-scheme: dark;
-    font-family: monospace;
+    font-family: spacemono;
+    font-size: 14px;
 }
 
 body {

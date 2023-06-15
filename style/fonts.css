@@ -2,4 +2,7 @@
     font-family: vercetty;
     src: url(../fonts/Vercetti-Regular.ttf);
 }
-  
+@font-face {
+    font-family: spacemono;
+    src: url(../fonts/SpaceMono-Regular.ttf);
+}
