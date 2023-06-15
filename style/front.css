@@ -191,26 +191,29 @@ main {
     border: var(--mainPurple) solid 10px;
 }
 
-/*Search Bar*//* TODO:New design
+/*Search Bar*/
 .searchBox {
     margin-left: 10vw;
     width: 240px;
 
-    display: grid;
-    grid-template-columns: 100px 120px 20px;
+    display: flex;
 }
 
 .searchButton {
-    color: var(--mainGlay);
-    float: right;
-    width: 40px;
+    border: 1px solid var(--mainBorder);
+    width: 120px;
     height: 40px;
-    border-radius: 50%;
-    background: var(--mainBorder);
+    border-radius: 0;
+    border: none;
+
+    background-color: var(--mainBackground);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.4s;
+
+    padding:0px;
+    margin:0px;
 }
 
 .searchButton:hover {
@@ -218,8 +221,7 @@ main {
 }
   
 .searchInput {
-    border: 1px solid var(--mainBorder);
-    border-radius: 10px;
+    border: none;
     background: none;
     outline: none;
     float: left;
@@ -229,14 +231,25 @@ main {
     font-size: auto;
     transition: 0.4s;
     line-height: 40px;
-    width: 80%;
+    width: 100%;
     background-color: var(--mainBackground);
 }
 
 #sortType {
-    height: 42px;
-    border-radius: 20px;
-    padding: 10px;
+    color: var(--mainGlay);
+    width: 120px;
+    height: 40px;
+    border: none;
+    color: white;
+    
+    background-color: var(--mainBackground);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+
+    padding:0px;
+    margin:0px;
 }
 
 #searchSuggestions {

@@ -2,8 +2,6 @@
  *  Variables *
  *************/
 let activePage = "home";
-let searchBarActive = false;
-let suggestionsMouseOver = false;
 let videoPage = 1;
 let activeInstance;
 
@@ -30,6 +28,7 @@ let subImg = document.getElementById("subImg");
 let main = document.getElementById("main");
 let sideBar = document.getElementById("sideBar");
 let searchSuggestions = document.getElementById("searchSuggestions");
+let searchInput = document.getElementById("searchBar");
 let footer = document.getElementById("footer");
 
 /*****************
@@ -161,35 +160,23 @@ function openSettings() {
 /**************
  *  Search Bar *
  **************/
-function mouseOverSearch() {
-  searchBarActive = true;
-  searchSuggestions.style.display = "block";
-}
-
-function mouseOutSearch() {
-  searchBarActive = false;
-  setTimeout(function () {
-    if (suggestionsMouseOver == false) {
-      searchSuggestions.style.display = "none";
-    }
-  }, 300);
-}
-
-function searchSuggestionsOnMouseOverFunc() {
-  suggestionsMouseOver = true;
-  console.log(suggestionsMouseOver);
-}
-
-function searchSuggestionsOnMouseLeave() {
-  suggestionsMouseOver = false;
-  searchSuggestions.style.display = "none";
-}
 
 function searchBarSearch() {
   makeSearchthingBox();
   changeMain("search");
 }
 
+searchInput.addEventListener("focus", function (){
+
+  searchSuggestions.style.display = "block";
+
+});
+
+searchInput.addEventListener("focusout", function (){
+
+  searchSuggestions.style.display = "none";
+  
+});
 /**************
  *  Api Calls *
  *************/
@@ -319,20 +306,22 @@ function searchPromptSuggestions() {
   if (document.getElementById("searchBar").value == "") {
     searchSuggestions.innerHTML = "";
   }
+
   fetch(
     activeInstance +
       "/api/v1/search/suggestions?q=" +
-      document.getElementById("searchBar").value +
-      "page="
+      document.getElementById("searchBar").value
   )
     .then((response) => response.json())
     .then((data) => {
-      searchSuggestions.innerHTML = "";
+      console.log(data)
+      let string = "";
       for (let i = 0; i < data.suggestions.length; i++) {
-        searchSuggestions.innerHTML += `
+        string += `
           <p onclick="getApiData('/api/v1/search/?q='+ '${data.suggestions[i]}'), makeSearchthingBox()" class="searchSuggestionMessage">${data.suggestions[i]}</p>
         `;
       }
+      searchSuggestions.innerHTML = string;
     });
 }
 
