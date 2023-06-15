@@ -62,7 +62,6 @@ button:hover{
 }
 */
 header{
-    height: 72px;
     display: grid;
     grid-template-columns: 25% 30% 25%;
     padding: 10px;

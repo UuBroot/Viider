@@ -246,7 +246,7 @@ function makedescrtiptionandheader(data) {
                 
                 <img src="${data.authorThumbnails[2].url}" alt="" style="width:40px;height40px;margin-right:1vw;" onclick="creatorPage('${data.authorUrl}')">
                 <p onclick="creatorPage('${data.authorUrl}')">${data.author}</p>
-                <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton">Subscribe</button>
+                <button style="width:70px;height:25px;padding:0px;margin-left:0.5vw;" id="subButton" onclick="writeChanel('${data.authorId}', '${data.author}')">Subscribe</button>
 
             </div>
 

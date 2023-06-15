@@ -48,7 +48,6 @@ function displayHomePage() {
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
-  main.display = "block";
   sideBar.style.height = "300px";
   /*the nav*/
   homeImg.style.filter = "invert(60%)";
@@ -61,13 +60,11 @@ function displayHomePage() {
 function displayPlaylistPage() {
   sideBar.innerText = "";
   sideBar.style.display = "block";
-
-  /*changes main and activePage*/
   main.innerHTML = "";
+  /*changes main and activePage*/
   activePage = "playlist";
   /*the next button*/
   footer.style.display = "none";
-  main.display = "block";
   videoPage = 1;
   sideBar.style.height = "300px";
   /*the nav*/
@@ -81,13 +78,12 @@ function displayPlaylistPage() {
 function displaySubscriptionPage() {
   /*changes main and activePage*/
   main.innerHTML = "";
-  main.display = "none";
   activePage = "subscriber";
   /*the next button*/
   footer.style.display = "none";
   videoPage = 1;
 
-  sideBar.style.height = "600px";
+  sideBar.style.height = "400px";
   sideBar.innerText = "";
   sideBar.style.display = "block";
   /*the nav*/
@@ -95,13 +91,13 @@ function displaySubscriptionPage() {
   subImg.style.filter = "invert(60%)";
   flagImg.style.filter = "none";
 
-  displaySubs();
+  printSubscribedVideos();
 }
 
 function makeSearchthingBox() {
   /*changes main and activePage*/
-  main.innerHTML = "";
   activePage = "search";
+  main.innerHTML = "";
   /*the next button*/
   footer.style.display = "flex";
   videoPage = 1;
@@ -109,7 +105,6 @@ function makeSearchthingBox() {
   sideBar.style.display = "block";
   sideBar.innerText = "";
   sideBar.style.height = "300px";
-  main.display = "block";
   /*the nav*/
   homeImg.style.filter = "none";
   subImg.style.filter = "none";
@@ -212,10 +207,11 @@ function getApiData(url) {
 
       //Does the other things
       console.log(data);
+      let string = "";
       for (let i = 0; i < data.length; i++) {
         switch (data[i].type) {
           case "video":
-            main.innerHTML += `
+            string += `
               <div id="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
                 <div id="touchBoxforHover">
@@ -244,7 +240,7 @@ function getApiData(url) {
             `;
             break;
           case "playlist":
-            main.innerHTML += `
+            string += `
               <div id="playlist-box" onclick="" style="background-image: url(${data[i].playlistThumbnail});">
                 
                 <div id="touchBoxforHover">
@@ -261,8 +257,7 @@ function getApiData(url) {
             `;
             break;
           case "shortVideo":
-            // TODO: author page
-            main.innerHTML += `
+            string += `
               <div id="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
                 <div id="touchBoxforHover">
@@ -288,7 +283,7 @@ function getApiData(url) {
             `;
             break;
           case "scheduled":
-            main.innerHTML += `
+            string += `
             <div id="vid-box"  class="scheduledVideo" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
             <div id="touchBoxforHover">
@@ -312,8 +307,11 @@ function getApiData(url) {
             </div>
           </div>
             `
+            
         }
+
       }
+      main.innerHTML = string;
     });
 }
 
@@ -339,7 +337,6 @@ function searchPromptSuggestions() {
 }
 
 function pageChange(direction) {
-  main.innerHTML = "";
   switch (direction) {
     case "right":
       if (videoPage > -1) {
@@ -378,69 +375,59 @@ function displayChanalsInSearch() {
       console.log(data)
       searchSuggestions.innerHTML = "";
 
+      let string = "";
       for (let i = 0; i < data.length; i++) {
         if(data[i].type == "channel"){
-          
-        }
-        sideBar.innerHTML += `
 
-          <div class="channelBox" onclick="creatorPage('${data[i].authorUrl}')">
+          string += `
 
-            <img src="${data[i].authorThumbnails[0].url}">
+            <div class="channelBox" onclick="creatorPage('${data[i].authorUrl}')">
 
-            <div>
+              <img src="${data[i].authorThumbnails[0].url}">
+
+              <div>
+              
+                <p class="authorName">${data[i].author}</p>
+
+                <p>${data[i].descriptionHtml}</p>
+
+              </div>
+
+              <p class="subscriberBox">${abbreviateNumber(data[i].subCount)} Subscriber</p> 
             
-              <p class="authorName">${data[i].author}</p>
-
-              <p>${data[i].descriptionHtml}</p>
-
             </div>
-
-            <p class="subscriberBox">${abbreviateNumber(data[i].subCount)} Subscriber</p> 
           
-          </div>
-          
-        `;
+          `;
+        }
+       
       }
+      sideBar.innerHTML = string;
     });
 }
 
  async function displayPlaylists() {
   sideBar.innerHTML = "";
   let json = JSON.parse(localStorage["Viider"]);
-  if(json.list == undefined){
+  if(json.list.length == 0){
     sideBar.innerHTML = `
       no playlists found
     `
   }
-  for(let i = 0;i<json.list.length;i++){
-    sideBar.innerHTML += `
-        <p class="playlists" id="playlistNr${i}" onclick="displayPlaylistVideo('${json.list[i].name}', ${i})">${json.list[i].name} 
-          <button onclick="deletePlaylist(${i})" class="deletePlaylistButton">X</button>
-        </p>
-    `
-  }
+  else {
+    let string = "";
 
-}
+    for(let i = 0;i<json.list.length;i++){
+      string += `
+          <p class="playlists" id="playlistNr${i}" onclick="displayPlaylistVideo('${json.list[i].name}', ${i})">${json.list[i].name} 
+            <button onclick="deletePlaylist(${i})" class="deletePlaylistButton">X</button>
+          </p>
+      `
+    }
 
-async function displaySubs(){
-
-  let json = JSON.parse(localStorage["Viider"]);
-  console.log(json)
-
-  if(json.subChan == undefined){
-    sideBar.innerHTML = `
-      no subscribers found
-    `
-  }
-
-  for(let i = 0;i<json.subChan.length;i++){
-
-    sideBar.innerHTML += `
-      <p onclick="creatorPage('//${json.subChan[i].chanalId}')">${json.subChan[i].name}</p>
-    `
+    sideBar.innerHTML = string;
 
   }
+
 }
 
 function displayPlaylistVideo(name, nr){
@@ -449,7 +436,6 @@ function displayPlaylistVideo(name, nr){
   document.getElementById("playlistNr"+nr).style.backgroundColor = "#1b10106a";
 
   //the other thing
-  main.innerHTML = "";
   let json = JSON.parse(localStorage["Viider"]);
 
 
@@ -460,7 +446,8 @@ function displayPlaylistVideo(name, nr){
         fetch(activeInstance + "/api/v1/videos/" + json.list[i].ids[j])
         .then((response) => response.json())
         .then((data) => {
-          main.innerHTML += `
+          let string = "";
+          string += `
             <div id="vid-box" onclick="openVideo('${data.videoId}')" style="background-image: url(${data.videoThumbnails[4].url});">
               
               <div id="touchBoxforHover">
@@ -487,6 +474,7 @@ function displayPlaylistVideo(name, nr){
           
             </div>
           `;
+          main.innerHTML = string;
         });
 
       }
@@ -495,44 +483,115 @@ function displayPlaylistVideo(name, nr){
   }
  
 }
-/************
- *  Converts *
- ************/
-function abbreviateNumber(value) {
-  var newValue = value;
-  if (value >= 1000) {
-    var suffixes = ["", "k", "m", "b", "t"];
-    var suffixNum = Math.floor(("" + value).length / 3);
-    var shortValue = "";
-    for (var precision = 2; precision >= 1; precision--) {
-      shortValue = parseFloat(
-        (suffixNum != 0
-          ? value / Math.pow(1000, suffixNum)
-          : value
-        ).toPrecision(precision)
-      );
-      var dotLessShortValue = (shortValue + "").replace(/[^a-zA-Z 0-9]+/g, "");
-      if (dotLessShortValue.length <= 2) {
-        break;
-      }
-    }
-    if (shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
-    newValue = shortValue + suffixes[suffixNum];
-  }
-  return newValue;
+
+function displayChanalName(name, chanalId, subCount, profilePic){
+  sideBar.innerHTML += `
+    <div style="display:flex">
+
+      <div onclick="creatorPage('//${chanalId}')" class="creatorButton">
+
+        <p>${name}</p>
+        
+        <p>${abbreviateNumber(subCount)} Subscriber</p>
+
+        <img src="${profilePic}" class="profilePicFromSubscribed">
+
+      </div>
+      <button onclick="deleteChanal('${chanalId}')">X</button>
+    
+    </div>
+  `
 }
 
-function makeUserTextGood() {
-  let badText = document.getElementById("searchBar").value;
-  let goodText = "";
-  for (let i = 0; i < badText.length; i++) {
-    if (badText.charAt(i) == " ") {
-      goodText += "+";
-    } else {
-      goodText += badText.charAt(i);
+function deleteChanal(chanalId){
+  let json = JSON.parse(localStorage["Viider"]); 
+
+  for (let i = 0;i<json.subChan.length;i++){
+    if(json.subChan[i].chanalId == chanalId){
+      deleteChanalFromStorrage(i);
+      setTimeout(function(){
+        displaySubscriptionPage();
+      },400)
     }
+    
   }
-  return goodText;
+ 
+}
+
+function sortAndDoSubscribedChannels(){
+  let json = JSON.parse(localStorage["Viider"]);
+  let videoArray = [];
+
+  if(json.subChan.length == 0){
+    sideBar.innerHTML = "You havn't subscribed to anyone yet."
+  }
+
+  for(let i = 0;i<json.subChan.length;i++){
+
+    fetch(activeInstance+"/api/v1/channels/"+json.subChan[i].chanalId)
+    .then (response => response.json ())
+    .then((data) => {
+
+      displayChanalName(data.author, data.authorId, data.subCount, data.authorThumbnails[4].url);//is for printing the chanal to the selection
+
+      for(let i = 0;i<data.latestVideos.length;i++){
+        videoArray.push(data.latestVideos[i]);
+      }
+
+    })
+
+  }
+
+  videoArray.sort((a, b) => {
+    const timeA = a.published;
+    const timeB = b.published;
+    return timeA - timeB;
+  });
+
+  return videoArray;
+}
+
+function printSubscribedVideos(){
+
+  let videoArray = sortAndDoSubscribedChannels();
+  setTimeout(function(){
+  
+    let string = "";
+
+    for(let i = 0;i<videoArray.length;i++){
+
+      string += `
+      <div id="vid-box" onclick="openVideo('${videoArray[i].videoId}')" style="background-image: url(${videoArray[i].videoThumbnails[4].url});">
+          
+      <div id="touchBoxforHover">
+          
+        <div id="vid-box-footer-box">
+            
+          <div id="vid-box-footer">
+              <p id="vidTitle">${videoArray[i].title}</p>
+            <hr>
+              <p>${abbreviateNumber(videoArray[i].viewCount)} Views</p>
+          </div>
+  
+          <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+              <p>${videoArray[i].publishedText}</p>
+            <hr>
+              <p>${calculateTime(videoArray[i].lengthSeconds)}</p>
+            <hr>
+              <p onclick="creatorPage('${videoArray[i].authorUrl}')" class="authorNamePageButton">${videoArray[i].author}</p>
+          </div>
+          
+        </div>
+      
+      </div>
+  
+    </div>
+      `;
+    }
+    main.innerHTML = string;
+  },2000)
+
+  
 }
 
 /****************
@@ -548,6 +607,3 @@ async function asyncWindowLoad(){
   console.log("active instalce: ",activeInstance)
   displayHomePage();
 }
-/*********
- *  Other *
- *********/

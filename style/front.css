@@ -88,6 +88,9 @@ footer {
     transform: rotate(360deg) scale(2);
 }
 
+.profilePicFromSubscribed {
+    width: 50px;
+}
 /****************
 *   Playlists   * on playlist page
 *****************/
@@ -150,6 +153,7 @@ main {
 
 #sideBar {
     overflow-y: scroll;
+    overflow-x: hidden;
     background-color: var(--mainBackground);
     border: 40px solid var(--mainBackground);
     border-radius: 10px;
@@ -162,6 +166,29 @@ main {
     background-color: var(--mainBackground);
     width: 70vw;
     height: 300px;
+}
+
+.creatorButton {
+    background-color: #00000019;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    transition: all 0.4s;
+    cursor: pointer;
+    width: 100%;
+
+    padding-left: 4vw;
+    padding-right: 4vw;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    z-index: 50;
+}
+.creatorButton:hover {
+    background-color: #0000004a;
+    height: 60px;
+    border: var(--mainPurple) solid 10px;
 }
 
 /*Search Bar*//* TODO:New design
