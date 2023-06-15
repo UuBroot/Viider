@@ -62,13 +62,22 @@
 
 /*the left and right mains*/
 #rightVidScreen {
-    display: grid;
-    grid-template-columns: auto;
-    grid-auto-rows: 350px;
-    grid-row-gap: 20px;
-    justify-content: center;
-    overflow: scroll;
-    margin-left: 4vw;
+  background-color: var(--mainGlay);
+  padding: 30px;
+  position: fixed;
+  right: 0;
+  width: 25vw;
+  height: 100%;
+  grid-template-rows: repeat(19, 310px);
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: 350px;
+  grid-row-gap: 20px;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-left: 4vw;
+  z-index: 50;
 }
 
 #leftVidScreen {
@@ -290,11 +299,6 @@ video {
     width: 60px;
     height: 2.5vw;
     border-radius: 10px;
-}
-
-/*Fixing css thing*/
-#vid-box {
-    height: 40vh;
 }
 
 /*whatever this is*/

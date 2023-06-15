@@ -156,10 +156,10 @@ nav {
 ********************/
 
 /*Vids in Main and Side bar*/
-#vid-box {
+.vid-box {
     background-color: var(--mainGlay);
     width: 90%;
-    height: 200px;
+    height: 180px;
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;
@@ -167,12 +167,10 @@ nav {
     transition: all 1s;
 }
 
-#vid-box-footer {
+.vid-box-footer {
     background-color: rgba(0, 0, 0, 0.575);
 
     width: 100%;
-    height: auto;
-
     display: flex;
     justify-content: space-between;
     
@@ -181,14 +179,14 @@ nav {
     grid-column-gap: auto;
 }
 
-#vid-box-footer-box {
+.vid-box-footer-box {
     height: 100%;
 }
 
 #playlist-box {
     background-color: var(--mainGlay);
     width: 90%;
-    height: 19vh;
+    height: 200px;
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;
@@ -202,13 +200,13 @@ nav {
 }
 
 /*makes the details show when hovering on a video*/
-#touchBoxforHover {
+.touchBoxforHover {
     opacity: 0;
     transition: all 0.2s;
     height: 100%;
 }
 
-#touchBoxforHover:hover {
+.touchBoxforHover:hover {
     opacity: 1;
 }
 
@@ -240,6 +238,7 @@ a {
     main {
         grid-template-columns: auto;
     }
+
 }
 @media only screen and (max-width: 800px) {
 

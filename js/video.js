@@ -180,19 +180,19 @@ function getApiData(videoId) {
 
 
               document.getElementById("rightVidScreen").innerHTML += `
-                <div id="vid-box" onclick="openVideo('${data.recommendedVideos[i].videoId}')" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url});">
+                <div class="vid-box" onclick="openVideo('${data.recommendedVideos[i].videoId}')" style="background-image: url(${data.recommendedVideos[i].videoThumbnails[3].url});">
                   
-                  <div id="touchBoxforHover">
+                  <div class="touchBoxforHover">
                       
-                  <div id="vid-box-footer-box">
+                  <div class="vid-box-footer-box">
                         
-                  <div id="vid-box-footer">
+                  <div class="vid-box-footer">
                       <p id="vidTitle">${data.recommendedVideos[i].title}</p>
                     <hr>
                       <p>${abbreviateNumber(data.recommendedVideos[i].viewCount)} Views</p>
                   </div>
 
-                  <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                  <div class="vid-box-footer" style="bottom:0px;position:absolute  ;">
                       <p>Recommended</p>
                       <hr>
                       <p>${calculateTime(data.recommendedVideos[i].lengthSeconds)}</p>

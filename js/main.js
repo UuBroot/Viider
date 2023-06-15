@@ -212,19 +212,19 @@ function getApiData(url) {
         switch (data[i].type) {
           case "video":
             string += `
-              <div id="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
+              <div class="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
-                <div id="touchBoxforHover">
+                <div class="touchBoxforHover">
                     
-                  <div id="vid-box-footer-box">
+                  <div class="vid-box-footer-box">
                       
-                    <div id="vid-box-footer">
+                    <div class="vid-box-footer">
                         <p id="vidTitle">${data[i].title}</p>
                       <hr>
                         <p>${abbreviateNumber(data[i].viewCount)} Views</p>
                     </div>
 
-                    <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                    <div class="vid-box-footer" style="bottom:0px;position:absolute  ;">
                         <p>${data[i].publishedText}</p>
                       <hr>
                         <p>${calculateTime(data[i].lengthSeconds)}</p>
@@ -241,11 +241,11 @@ function getApiData(url) {
             break;
           case "playlist":
             string += `
-              <div id="playlist-box" onclick="" style="background-image: url(${data[i].playlistThumbnail});">
+              <div class="playlist-box" onclick="" style="background-image: url(${data[i].playlistThumbnail});">
                 
-                <div id="touchBoxforHover">
+                <div class="touchBoxforHover">
                             
-                  <div id="vid-box-footer">
+                  <div class="vid-box-footer">
                       <p id="vidTitle">${data[i].title}</p>
                     <hr>
                       <p>${abbreviateNumber(data[i].videoCount)} Videos</p>
@@ -258,19 +258,19 @@ function getApiData(url) {
             break;
           case "shortVideo":
             string += `
-              <div id="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
+              <div class="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
-                <div id="touchBoxforHover">
+                <div class="touchBoxforHover">
 
-                  <div id="vid-box-footer-box">
+                  <div class="vid-box-footer-box">
                   
-                    <div id="vid-box-footer">
+                    <div class="vid-box-footer">
                         <p id="vidTitle">${data[i].title}</p>
                       <hr>
                         <p>${abbreviateNumber(data[i].viewCount)} Views</p>
                     </div>
 
-                    <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
+                    <div class="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
                         <p>${data[i].publishedText}</p>
                       <hr>
                         <p>${calculateTime(data[i].lengthSeconds)}</p>
@@ -284,19 +284,19 @@ function getApiData(url) {
             break;
           case "scheduled":
             string += `
-            <div id="vid-box"  class="scheduledVideo" style="background-image: url(${data[i].videoThumbnails[4].url});">
+            <div class="vid-box"  class="scheduledVideo" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
-            <div id="touchBoxforHover">
+            <div class="touchBoxforHover">
 
-              <div id="vid-box-footer-box">
+              <div class="vid-box-footer-box">
               
-                <div id="vid-box-footer">
+                <div class="vid-box-footer">
                     <p id="vidTitle">${data[i].title}</p>
                   <hr>
                     <p>${abbreviateNumber(data[i].viewCount)} Views</p>
                 </div>
 
-                <div id="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
+                <div class="vid-box-footer" style="bottom:0px;position:absolute;display:grid;">
                     <p>${data[i].publishedText}</p>
                   <hr>
                     <p>${calculateTime(data[i].lengthSeconds)}</p>
@@ -448,19 +448,19 @@ function displayPlaylistVideo(name, nr){
         .then((data) => {
           let string = "";
           string += `
-            <div id="vid-box" onclick="openVideo('${data.videoId}')" style="background-image: url(${data.videoThumbnails[4].url});">
+            <div class="vid-box" onclick="openVideo('${data.videoId}')" style="background-image: url(${data.videoThumbnails[4].url});">
               
-              <div id="touchBoxforHover">
+              <div class="touchBoxforHover">
                   
-                <div id="vid-box-footer-box">
+                <div class="vid-box-footer-box">
                     
-                  <div id="vid-box-footer">
+                  <div class="vid-box-footer">
                       <p id="vidTitle">${data.title}</p>
                     <hr>
                       <p>${abbreviateNumber(data.viewCount)} Views</p>
                   </div>
 
-                  <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+                  <div class="vid-box-footer" style="bottom:0px;position:absolute  ;">
                       <p>${data.publishedText}</p>
                     <hr>
                       <p>${calculateTime(data.lengthSeconds)}</p>
@@ -561,19 +561,19 @@ function printSubscribedVideos(){
     for(let i = 0;i<videoArray.length;i++){
 
       string += `
-      <div id="vid-box" onclick="openVideo('${videoArray[i].videoId}')" style="background-image: url(${videoArray[i].videoThumbnails[4].url});">
+      <div class="vid-box" onclick="openVideo('${videoArray[i].videoId}')" style="background-image: url(${videoArray[i].videoThumbnails[4].url});">
           
-      <div id="touchBoxforHover">
+      <div class="touchBoxforHover">
           
-        <div id="vid-box-footer-box">
+        <div class="vid-box-footer-box">
             
-          <div id="vid-box-footer">
-              <p id="vidTitle">${videoArray[i].title}</p>
+          <div class="vid-box-footer">
+              <p class="vidTitle">${videoArray[i].title}</p>
             <hr>
               <p>${abbreviateNumber(videoArray[i].viewCount)} Views</p>
           </div>
   
-          <div id="vid-box-footer" style="bottom:0px;position:absolute  ;">
+          <div class="vid-box-footer" style="bottom:0px;position:absolute  ;">
               <p>${videoArray[i].publishedText}</p>
             <hr>
               <p>${calculateTime(videoArray[i].lengthSeconds)}</p>
