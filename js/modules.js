@@ -141,7 +141,7 @@ function creatorPage(url) {
     let urlREALLYtoUse = "";
 
     let numberOfSlash = 0;
-    const NUMBER_OF_SLASH_TO_GO_TO = 4
+    const NUMBER_OF_SLASH_TO_GO_TO = 4 //4 is default
     for(let i = 0; i < currentUrl.length; i++) {
       if (numberOfSlash>NUMBER_OF_SLASH_TO_GO_TO) {
       //HACK: i don't know but this has to be this way otherwise it doesn't do pages and i don't want to fix it :)
