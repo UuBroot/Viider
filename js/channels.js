@@ -34,7 +34,7 @@ window.onload = function () {
 
   //make params
   let params = new URLSearchParams(document.location.search);
-  chanalId = params.get('id')
+  chanalId = "/"+params.get('id')
 
   console.log(chanalId);
 };
