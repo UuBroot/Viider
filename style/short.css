@@ -1,3 +1,14 @@
 #videoSrc {
     width: 50vh;
 }
+#videoFrame {
+    display: flex;
+    justify-content: center;
+}
+#rightVidScreen {
+    display: none;
+}
+
+#leftVidScreen {
+    width: 100vw;
+}
