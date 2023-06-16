@@ -141,15 +141,6 @@ function getApiData(videoId) {
   
         //PutInPreview
         video.poster = data.videoThumbnails[0].url;
-  
-        //PutInCaption //TODO:Captions
-        console.log(activeInstance + data.captions[0].url)
-        fetch(activeInstance + data.captions[0].url)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(JSON.stringify(data))
-          //document.getElementById("videoTrack").src = data
-        })
         
         //Sets Length
         videoTime.innerHTML = calculateTime(data.lengthSeconds, "minimal");

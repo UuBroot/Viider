@@ -135,6 +135,8 @@ function openHome(){
 **************/
 function creatorPage(url) {
   console.log("Urltogoto: ", url);
+  window.replace('./channels.html')
+  /*
   (async() => {
     let currentUrl = window.location.href;
     let urlToUse = "";
@@ -176,7 +178,7 @@ function creatorPage(url) {
     urlREALLYtoUse += urlToUse + "channels.html?id=" + cleanChanalUrl;
     console.log(urlREALLYtoUse)
     window.open(urlREALLYtoUse);
-  })()
+  })()*/
 }
 
 /**Local Storrage**/
