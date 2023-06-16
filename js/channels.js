@@ -194,9 +194,8 @@ function generate(data) {
               `;
               break;
             case "shortVideo":
-              // TODO: author page
               main.innerHTML += `
-                <div id="vid-box" onclick="openVideo('${data.latestVideos[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
+                <div id="vid-box" onclick="openVideo('${data.latestVideos[i].videoId}', true)" style="background-image: url(${data[i].videoThumbnails[4].url});">
                   
                   <div id="touchBoxforHover">
   

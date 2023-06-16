@@ -251,7 +251,7 @@ function getApiData(url) {
             break;
           case "shortVideo":
             string += `
-              <div class="vid-box" onclick="openVideo('${data[i].videoId}', true)" style="background-image: url(${data[i].videoThumbnails[4].url});">
+              <div class="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
                 <div class="touchBoxforHover">
 
@@ -520,10 +520,6 @@ function sortAndDoSubscribedChannels(){
   let json = JSON.parse(localStorage["Viider"]);
   let videoArray = [];
 
-  if(json.subChan.length == 0){
-    sideBar.innerHTML = "You havn't subscribed to anyone yet."
-  }
-
   for(let i = 0;i<json.subChan.length;i++){
 
     fetch(activeInstance+"/api/v1/channels/"+json.subChan[i].chanalId)
@@ -538,6 +534,10 @@ function sortAndDoSubscribedChannels(){
 
     })
 
+  }
+
+  if(json.subChan.length == 0){
+    sideBar.innerHTML = "You havn't subscribed to anyone yet."
   }
 
   videoArray.sort((a, b) => {
@@ -587,6 +587,9 @@ function printSubscribedVideos(){
   
     </div>
       `;
+    }
+    if(videoArray.length == 0){
+      string = ""
     }
     main.innerHTML = string;
   },2000)
