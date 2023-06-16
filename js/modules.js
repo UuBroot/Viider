@@ -78,7 +78,7 @@ function makeUserTextGood() {
   return goodText;
 }
 /********* open Video *********/
-function openVideo(videoId) {
+function openVideo(videoId, short = false) {
 
   (async() => {
     let currentUrl = window.location.href;
@@ -97,8 +97,13 @@ function openVideo(videoId) {
         urlToUse += currentUrl.charAt(i);
       }
     }
-    
-    urlREALLYtoUse += 'video.html?id=' + videoId;
+    if(short){
+      urlREALLYtoUse += 'short.html?id=' + videoId;
+    }
+    else {
+      urlREALLYtoUse += 'video.html?id=' + videoId;
+    }
+
     console.log(urlREALLYtoUse)
     window.location.replace(urlREALLYtoUse);
   })()

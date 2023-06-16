@@ -251,7 +251,7 @@ function getApiData(url) {
             break;
           case "shortVideo":
             string += `
-              <div class="vid-box" onclick="openVideo('${data[i].videoId}')" style="background-image: url(${data[i].videoThumbnails[4].url});">
+              <div class="vid-box" onclick="openVideo('${data[i].videoId}', true)" style="background-image: url(${data[i].videoThumbnails[4].url});">
                 
                 <div class="touchBoxforHover">
 
