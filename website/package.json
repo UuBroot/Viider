@@ -1,0 +1,15 @@
+{
+  "name": "viider",
+  "version": "4.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "react": "^18.2.0"
+  }
+}
